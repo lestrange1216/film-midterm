@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Analysis Midterm Master Portal (Weeks 1-7)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    /* Custom 3D Flip Card Styles */
+    .perspective-1000 { perspective: 1000px; }
+    .transform-style-preserve-3d { transform-style: preserve-3d; }
+    .backface-hidden { backface-visibility: hidden; }
+    .rotate-y-180 { transform: rotateY(180deg); }
+    .card-flipped { transform: rotateY(180deg); }
+    
+    /* Smooth Transitions */
+    .transition-flip { transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    
+    /* Print Styles for study sheet generation */
+    @media print {
+      header, nav, .no-print { display: none !important; }
+      body { background: white; color: black; }
+      .tab-content { display: block !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col font-sans selection:bg-blue-500 selection:text-white">
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="bg-slate-900 text-white shadow-xl sticky top-0 z-50 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-black text-xl shadow-lg ring-2 ring-blue-400/30">
+          🎬
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg sm:text-xl font-black tracking-tight text-white">Film Analysis Midterm Master Portal</h1>
+            <span class="bg-blue-600/40 text-blue-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-400/30">Weeks 1–7</span>
+          </div>
+          <p class="text-xs text-slate-400">Yale Film Guide & Korean Cinema (Weeks 1–7) • 만점 대비 마스터 가이드</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/40 font-bold rounded-lg text-xs flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span> NO CHEAT SHEET
+        </span>
+        <button onclick="window.print()" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-semibold border border-slate-700 transition flex items-center gap-1">
+          🖨️ 인쇄/PDF 저장
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 flex overflow-x-auto space-x-1 sm:space-x-3 text-xs sm:text-sm font-semibold border-t border-slate-800 scrollbar-none">
+      <button onclick="navigateTab('part1')" id="nav-part1" class="py-3 px-3 text-blue-400 border-b-2 border-blue-500 whitespace-nowrap flex items-center gap-1.5">
+        📇 Part I: 플래시카드 (30점)
+      </button>
+      <button onclick="navigateTab('part2')" id="nav-part2" class="py-3 px-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent whitespace-nowrap flex items-center gap-1.5">
+        🎯 Part II: 클립 분석 공식 (30점)
+      </button>
+      <button onclick="navigateTab('part3')" id="nav-part3" class="py-3 px-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent whitespace-nowrap flex items-center gap-1.5">
+        📑 Part III: 에세이 전주제 (40점)
+      </button>
+      <button onclick="navigateTab('visual')" id="nav-visual" class="py-3 px-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent whitespace-nowrap flex items-center gap-1.5">
+        👁️ 비주얼 시각 문법 도표
+      </button>
+      <button onclick="navigateTab('rubric')" id="nav-rubric" class="py-3 px-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent whitespace-nowrap flex items-center gap-1.5">
+        📋 채점 기준 & 주차별 매트릭스
+      </button>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN CONTENT CONTAINER ================= -->
+  <main class="flex-grow max-w-7xl mx-auto w-full p-4 sm:p-6 lg:p-8 space-y-8">
+
+    <!-- ================= TAB 1: PART 1 FLASHCARDS ================= -->
+    <section id="tab-part1-content" class="tab-content space-y-6">
+      
+      <!-- Part 1 Control Header -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 bg-blue-100 text-blue-800 text-xs font-black rounded">30점 배점</span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900">Part I: 용어 식별 인터랙티브 플래시카드</h2>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+              카드를 클릭하면 <strong>[1. 정확한 정의] + [2. 구체적 영화/논문 장면] + [3. 이것이 왜 중요한가(의의)]</strong> 3문장 만점 공식 답변이 나타납니다.
+            </p>
+          </div>
+
+          <!-- Filter & Search Controls -->
+          <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto">
+            <input type="text" id="fc-search" oninput="filterFlashcards()" placeholder="🔍 용어 검색 (예: camera, Klein, Zizek...)" class="flex-grow lg:w-64 px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50">
+            <select id="fc-category" onchange="filterFlashcards()" class="px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50 font-medium">
+              <option value="all">전체 용어 (34개)</option>
+              <option value="formal">영화 형식 문법 (Formal Vocabulary)</option>
+              <option value="w12">W1-2: The Host / 세계화 / 386세대</option>
+              <option value="w3">W3: Chunhyang / 전통 / 판소리</option>
+              <option value="w4">W4: Taegukgi / 블록버스터 / 분단</option>
+              <option value="w5">W5: Train to Busan / K-좀비 / 호모사케르</option>
+              <option value="w6">W6: Oldboy / 폭력 / 무관심의 악</option>
+              <option value="w7">W7: Burning / 상호텍스트성 / 계급</option>
+            </select>
+            <button onclick="flipAllCards()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition shadow-sm">
+              🔄 전체 뒤집기
+            </button>
+          </div>
+        </div>
+
+        <!-- 3-Sentence Formula Banner -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4 text-xs">
+          <div class="p-3 rounded-xl bg-blue-50 border border-blue-200">
+            <strong class="text-blue-700 block mb-1">Sentence 1: Accurate Definition</strong>
+            <p class="text-slate-600">자신만의 언어로 영화적/이론적 개념을 명확하게 정의 (단순 직역 지양, 기능 명시).</p>
+          </div>
+          <div class="p-3 rounded-xl bg-purple-50 border border-purple-200">
+            <strong class="text-purple-700 block mb-1">Sentence 2: Specific Film Scene / Reading</strong>
+            <p class="text-slate-600">수업 영화의 구체적 장면 또는 논문 저자(Klein, Choe, Lee, Choi 등) 인용 결합.</p>
+          </div>
+          <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200">
+            <strong class="text-emerald-700 block mb-1">Sentence 3-4: Why It Matters</strong>
+            <p class="text-slate-600">이 형식/개념이 관객의 심리, 주제의식, 또는 이데올로기 비판에 미치는 결정적 영향.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flashcards Grid -->
+      <div id="flashcards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: PART 2 CLIP ANALYSIS FRAMEWORK ================= -->
+    <section id="tab-part2-content" class="tab-content hidden space-y-6">
+      
+      <!-- Top Guide Banner -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 text-xs font-black rounded">30점 배점 • 2회 상영</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Part II: 클립 분석 만점 작성 프레임워크</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600">
+          어떤 미지의 장면이 나와도 즉석에서 작성할 수 있는 <strong>3열 노트 필기법</strong>과 <strong>고득점 문장 빌더 공식</strong>, 그리고 시험 후보 6개 장면의 실전 답안입니다.
+        </p>
+
+        <!-- 6 Golden Steps -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-blue-600 uppercase">Step 1 & 2 • 상영 중</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">충격 순간 포착 & 3열 필기</h4>
+            <p class="text-xs text-slate-600 mt-1">
+              클립을 보며 가장 의외이거나 감정적으로 강렬한 순간을 포착(주제문이 됨). 시험지 여백에 <strong>Image / Editing / Sound</strong> 3열 표로 즉각 메모.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-purple-600 uppercase">Step 3 • 첫 문장 쓰기</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">Claim First: 형식의 능동적 기능</h4>
+            <p class="text-xs text-slate-600 mt-1">
+              "The scene is very intense" (X 감점!) ❌<br>
+              <span class="text-purple-700 font-bold">"The [formal element] [active verb] [narrative effect]"</span> 형식으로 작성.
+            </p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-emerald-600 uppercase">Step 4, 5, 6 • 본문 및 마무리</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">3요소 실증 + 논문 적용 + 직답</h4>
+            <p class="text-xs text-slate-600 mt-1">
+              화면/편집/음향 3개 형식을 구체적 장면에 결합하고, 수업 논문 개념 1개를 깊이 적용하여 추가 질문에 단호하게 답변.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- The 3-Column Field Note Strategy -->
+      <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-md">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+          <h3 class="text-sm sm:text-base font-bold text-amber-400">📝 시험장 여백에 그릴 3열 필기 전략 (The 3-Column Note Template)</h3>
+          <span class="text-xs text-slate-400 font-mono">1st Screen: 개요 / 2nd Screen: 세부 디테일</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+          <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+            <div class="flex items-center gap-1.5 text-blue-400 font-bold text-sm mb-2">
+              <span>📷</span> 1. IMAGE (화면/미장센)
+            </div>
+            <ul class="text-slate-300 space-y-1.5">
+              <li>• <strong>Framing:</strong> CU, EWS, Medium Shot?</li>
+              <li>• <strong>Angle:</strong> Eye-level, Low, High, Canted?</li>
+              <li>• <strong>Movement:</strong> Handheld, Tracking, Pan, Tilt?</li>
+              <li>• <strong>Lighting:</strong> High-key, Low-key, Chiaroscuro?</li>
+              <li>• <strong>Color:</strong> Saturated, Desaturated, Palette?</li>
+              <li>• <strong>Mise-en-scène:</strong> Props, Costumes, Blocking?</li>
+            </ul>
+          </div>
+          <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+            <div class="flex items-center gap-1.5 text-purple-400 font-bold text-sm mb-2">
+              <span>✂️</span> 2. EDITING (편집)
+            </div>
+            <ul class="text-slate-300 space-y-1.5">
+              <li>• <strong>Cutting Rate:</strong> Fast cutting vs Long take?</li>
+              <li>• <strong>Pacing / ASL:</strong> Rapid panic vs Slow dread?</li>
+              <li>• <strong>Continuity:</strong> Eyeline match, Shot-reverse-shot?</li>
+              <li>• <strong>Disjunction:</strong> Jump cut, Elliptical jump?</li>
+              <li>• <strong>Rhythm:</strong> Cuts timed to physical/music beat?</li>
+              <li>• <strong>Transition:</strong> Cut, Dissolve, Fade, Graphic match?</li>
+            </ul>
+          </div>
+          <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+            <div class="flex items-center gap-1.5 text-emerald-400 font-bold text-sm mb-2">
+              <span>🔊</span> 3. SOUND (음향)
+            </div>
+            <ul class="text-slate-300 space-y-1.5">
+              <li>• <strong>Diegetic:</strong> Dialogue, screams, footsteps, Foley?</li>
+              <li>• <strong>Non-Diegetic:</strong> Orchestral score, jazz trumpet?</li>
+              <li>• <strong>Sound Bridge:</strong> Audio overlaps visual cut?</li>
+              <li>• <strong>Counterpoint:</strong> Ironic classical music over gore?</li>
+              <li>• <strong>Silence:</strong> Sudden acoustic drop, muting?</li>
+              <li>• <strong>Voiceover:</strong> Extradiegetic narrator, singing?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Master Paragraph Formula Builder -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-4">
+        <h3 class="text-lg font-black text-slate-900">템플릿: Part II 고득점 답안 문장 빌더 (The Master Formula)</h3>
+        
+        <div class="space-y-3 text-xs sm:text-sm">
+          <!-- Step 1 Claim -->
+          <div class="p-3.5 bg-blue-50/60 rounded-xl border-l-4 border-blue-600">
+            <span class="font-bold text-blue-900 block mb-1">1. The Formal Claim (형식의 기능을 주장하는 첫 문장)</span>
+            <p class="font-mono text-slate-800 text-xs sm:text-sm">
+              "In this sequence, [Director] utilizes <strong>[Formal Technique: e.g., low-key chiaroscuro lighting / an unbroken long take]</strong> to <strong>[Active Verb: e.g., externalize / destabilize / expose]</strong> <strong>[Narrative/Thematic Conflict: e.g., the protagonist's descent into moral ambiguity / systemic state negligence]</strong>."
+            </p>
+          </div>
+
+          <!-- Step 2-4 Formal Elements -->
+          <div class="p-3.5 bg-purple-50/60 rounded-xl border-l-4 border-purple-600">
+            <span class="font-bold text-purple-900 block mb-1">2-4. Three Formal Elements Tied to Specific Moments (3가지 형식 요소 실증)</span>
+            <p class="font-mono text-slate-800 text-xs sm:text-sm leading-relaxed">
+              "First, regarding the visual image, the camera employs a <strong>[Specific Shot Scale & Angle: e.g., tight close-up at eye level]</strong> when <strong>[Specific Scene Moment]</strong>, which <strong>[Formal Function: forces spectator identification with the character's unvarnished grief]</strong>. Second, the editing reinforces this psychological pressure through <strong>[Specific Editing Choice: e.g., a sudden acceleration in cutting rate / an elliptical jump cut]</strong>, <strong>[Formal Function: rupturing spatial coherence to evoke kinetic panic]</strong>. Third, this formal orchestration is anchored acoustically by <strong>[Sound Element: e.g., an intrusive sound bridge / diegetic muffled breathing]</strong> that <strong>[Formal Function: bridges narrative spaces and heightens claustrophobia]</strong>."
+            </p>
+          </div>
+
+          <!-- Step 5 Reading -->
+          <div class="p-3.5 bg-amber-50/60 rounded-xl border-l-4 border-amber-600">
+            <span class="font-bold text-amber-900 block mb-1">5. Course Reading / Concept Integration (수업 논문 개념의 실질적 적용)</span>
+            <p class="font-mono text-slate-800 text-xs sm:text-sm">
+              "This cinematic form directly enacts <strong>[Scholar]'s concept of [Theoretical Term: e.g., Christina Klein's 'deep crime' / Youngmin Choe's 'transient monument' / Giorgio Agamben's 'bare life']</strong>, demonstrating that the sequence's formal violence is not mere sensational spectacle, but a rigorous diagnosis of <strong>[Deeper Socio-Political Critique]</strong>."
+            </p>
+          </div>
+
+          <!-- Step 6 Direct Answer -->
+          <div class="p-3.5 bg-emerald-50/60 rounded-xl border-l-4 border-emerald-600">
+            <span class="font-bold text-emerald-900 block mb-1">6. Direct Answer to the Added Prompt Question (추가 질문에 대한 직접적 입장 표명)</span>
+            <p class="font-mono text-slate-800 text-xs sm:text-sm">
+              "Therefore, in response to the question of whether [Prompt Question], the clip demonstrates that <strong>[Direct Stance: e.g., the film subverts rather than reproduces the convention]</strong>, because the formal juxtaposition of <strong>[Formal Evidence A]</strong> against <strong>[Formal Evidence B]</strong> ultimately privileges <strong>[Core Takeaway]</strong>."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 Candidate Scenes Interactive Practice -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div>
+            <h3 class="text-lg font-black text-slate-900">🎥 수업 6대 핵심 후보 장면 실전 답안 (Practice Clip Vault)</h3>
+            <p class="text-xs text-slate-500">실제 시험에 출제될 6개 장면의 3열 필기 요약과 15점 만점 영문 모범 답안</p>
+          </div>
+        </div>
+
+        <!-- Scene Tabs Buttons -->
+        <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-3" id="clip-tabs-bar">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Scene Content Box -->
+        <div id="clip-display-area" class="mt-4">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: PART 3 ESSAY BLUEPRINTS ================= -->
+    <section id="tab-part3-content" class="tab-content hidden space-y-6">
+      
+      <!-- Top Guide Banner -->
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-2.5 py-0.5 bg-amber-100 text-amber-800 text-xs font-black rounded">40점 배점 • 4개 중 2개 선택</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Part III: 쇼트 에세이 3대 테마 전 문항 청사진</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600">
+          강의 계획서에 수록된 <strong>3개 테마, 총 8개 질문</strong>에 대해 <span class="font-semibold text-blue-600">[한국어 요약 + 영어 핵심 키워드 + 2개 이상 구체적 장면 형식 분석 + 학자 인용 + 완성된 고득점 영어 에세이]</span>를 완벽하게 제공합니다.
+        </p>
+
+        <!-- 10-Minute Essay Strategy -->
+        <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 mt-4 text-xs sm:text-sm text-amber-900 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+          <div>
+            <strong>⏱️ 시험장 10분 아웃라인 필승 공식:</strong>
+            <p class="text-xs text-amber-800 mt-0.5">
+              1) 1문단에 반박 가능한 명확한 <strong>Thesis</strong> 한 문장 작성 → 
+              2) 형식 용어로 묘사된 <strong>2개 이상의 구체적 장면</strong> 확보 → 
+              3) 저자명과 개념(Klein, Choi, Choe, Lee, Žižek, Boman)을 논증 도구로 배치!
+            </p>
+          </div>
+          <span class="px-3 py-1 bg-amber-200 text-amber-900 font-bold rounded-lg text-xs whitespace-nowrap">최소 분량: 문제당 1쪽 이상</span>
+        </div>
+      </div>
+
+      <!-- Theme Selector Buttons -->
+      <div class="flex flex-wrap gap-2">
+        <button onclick="showEssayTheme('themeA')" id="btn-themeA" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 text-white shadow-sm transition">
+          Theme A. Global Genre, Local Critique & Industry
+        </button>
+        <button onclick="showEssayTheme('themeB')" id="btn-themeB" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-200 text-slate-700 hover:bg-slate-300 transition">
+          Theme B. Tradition, Memory & the Nation
+        </button>
+        <button onclick="showEssayTheme('themeC')" id="btn-themeC" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-200 text-slate-700 hover:bg-slate-300 transition">
+          Theme C. Violence, Responsibility & Class
+        </button>
+      </div>
+
+      <!-- Essay Theme Container -->
+      <div id="essay-theme-container" class="space-y-6">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: VISUAL GRAMMAR GUIDE ================= -->
+    <section id="tab-visual-content" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-2">👁️ Visual Grammar Master Reference (Yale Guide & Docx)</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mb-6">
+          과제 노트(DOCX)와 예일대 영화 분석 가이드의 핵심 시각 문법(카메라 앵글, 샷 스케일, 카메라 무브먼트, 조명, 사운드)을 직관적으로 비교하고 암기하는 비주얼 가이드입니다.
+        </p>
+
+        <!-- Visual Sub-Navigation -->
+        <div class="flex border-b border-slate-200 space-x-3 mb-6 overflow-x-auto text-xs sm:text-sm font-bold">
+          <button onclick="switchVisualTab('v-angles')" id="vnav-angles" class="pb-2 text-blue-600 border-b-2 border-blue-600 whitespace-nowrap">📐 Camera Angles (각도)</button>
+          <button onclick="switchVisualTab('v-framing')" id="vnav-framing" class="pb-2 text-slate-400 hover:text-slate-700 whitespace-nowrap">🖼️ Shot Scale & Framing (크기)</button>
+          <button onclick="switchVisualTab('v-movement')" id="vnav-movement" class="pb-2 text-slate-400 hover:text-slate-700 whitespace-nowrap">🎥 Camera Movement (움직임)</button>
+          <button onclick="switchVisualTab('v-mise')" id="vnav-mise" class="pb-2 text-slate-400 hover:text-slate-700 whitespace-nowrap">🕯️ Mise-en-scène & Lighting (조명/배치)</button>
+          <button onclick="switchVisualTab('v-editing')" id="vnav-editing" class="pb-2 text-slate-400 hover:text-slate-700 whitespace-nowrap">✂️ Yale Editing & Sound (편집/사운드)</button>
+        </div>
+
+        <div id="v-panels-container">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 5: RUBRIC & MATRIX ================= -->
+    <section id="tab-rubric-content" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-4">📋 Weeks 1–7 Course Syllabus & Grading Rubric</h2>
+        
+        <!-- Official Rubric Table -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden mb-6">
+          <table class="w-full text-left text-xs sm:text-sm text-slate-700">
+            <thead class="bg-slate-900 text-white font-bold">
+              <tr>
+                <th class="p-3 w-1/4">Exam Section</th>
+                <th class="p-3 w-1/6">Points</th>
+                <th class="p-3">Official Grading Criteria (강의계획서 채점 기준)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr class="bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">I. Identification</td>
+                <td class="p-3 font-semibold text-blue-600">30 (3*10)</td>
+                <td class="p-3"><strong>An accurate definition in your own words, a specific film scene or reading, and why it matters.</strong> (단순 번역이 아닌 기능 정의, 구체적 장면/논문, 서사/이데올로기적 의의)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-slate-900">II. Clip Analysis</td>
+                <td class="p-3 font-semibold text-purple-600">30 (15*2)</td>
+                <td class="p-3"><strong>Three or more formal elements tied to moments, one claim about what the form does, an applied course concept or reading, a direct answer to the added question.</strong></td>
+              </tr>
+              <tr class="bg-slate-50">
+                <td class="p-3 font-bold text-slate-900">III. Essay</td>
+                <td class="p-3 font-semibold text-amber-600">40 (20*2)</td>
+                <td class="p-3"><strong>An arguable thesis in the first paragraph, two or more scenes described in formal terms, a reading represented accurately and put to work, with author and page where possible, paragraphs that advance the argument.</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Weekly Film & Readings Matrix -->
+        <h3 class="text-lg font-bold text-slate-900 mb-3">📅 주차별 영화, 리딩 및 핵심 키워드 매트릭스</h3>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs text-slate-700">
+            <thead class="bg-slate-100 text-slate-900 font-bold border-b border-slate-200">
+              <tr>
+                <th class="p-3">주차</th>
+                <th class="p-3">주제 및 영화</th>
+                <th class="p-3">필수 리딩 및 학자</th>
+                <th class="p-3">핵심 이론 키워드</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr>
+                <td class="p-3 font-bold">Week 1</td>
+                <td class="p-3">Orientation: Brief history of Korean cinema</td>
+                <td class="p-3">Screening clip: A Brief History of Korean Cinema</td>
+                <td class="p-3">식민지 검열, 황금기(1960s), 유신 정체기, 1990년대 부흥</td>
+              </tr>
+              <tr class="bg-slate-50/50">
+                <td class="p-3 font-bold">Week 2</td>
+                <td class="p-3 font-semibold text-blue-700">The Host (Bong Joon-ho, 2006)</td>
+                <td class="p-3">Jinhee Choi, Christina Klein</td>
+                <td class="p-3">Transnational genre, Surface crime vs deep crime, 386 generation, Screen quota, Gwoemul vs The Host</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold">Week 3</td>
+                <td class="p-3 font-semibold text-blue-700">Chunhyang (Im Kwon-taek, 2000)</td>
+                <td class="p-3">Hyangjin Lee, Im Kwon-taek (Sopyonje)</td>
+                <td class="p-3">Invented Korean-ness, Cannes vs Seoul audiences, P'ansori, Montage, Mise en abyme</td>
+              </tr>
+              <tr class="bg-slate-50/50">
+                <td class="p-3 font-bold">Week 4</td>
+                <td class="p-3 font-semibold text-blue-700">Taegukgi (Kang Je-gyu, 2004)</td>
+                <td class="p-3">Jinhee Choi, Youngmin Choe</td>
+                <td class="p-3">Korean blockbuster, Post-IMF film industry, Transient monument, Excavation frame, Anticommunist revision</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold">Week 5</td>
+                <td class="p-3 font-semibold text-blue-700">Train to Busan (2016) & Peninsula</td>
+                <td class="p-3">Sung-Ae Lee, Giorgio Agamben</td>
+                <td class="p-3">K-zombie as Hallyu horror, Fast zombie, Redemption script, Nation is a family, Bare life (Homo Sacer)</td>
+              </tr>
+              <tr class="bg-slate-50/50">
+                <td class="p-3 font-bold">Week 6</td>
+                <td class="p-3 font-semibold text-blue-700">Oldboy (Park Chan-wook, 2003)</td>
+                <td class="p-3">Chungmoo Choi, Slavoj Žižek</td>
+                <td class="p-3">Subjective vs systemic violence, Evil of apathy, Remembrance vs forgetting, Baroque color style</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold">Week 7</td>
+                <td class="p-3 font-semibold text-blue-700">Burning (Lee Chang-dong, 2018)</td>
+                <td class="p-3">Bjorn Boman, Haruki Murakami</td>
+                <td class="p-3">Intertextuality, Recontextualization, Epistemological ambiguity, Tangerine pantomime, Little/Great Hunger, Class/Gender</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900 text-slate-400 py-6 border-t border-slate-800 text-center text-xs mt-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-semibold text-slate-300">Film Analysis Midterm Master Portal • Comprehensive Preparation Suite</p>
+      <p class="mt-1 text-slate-500">Good luck on your exam! Remember: Claim First, 3 Precise Formal Terms, Applied Readings.</p>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT LOGIC & COMPLETE DATA BANK ================= -->
+  <script>
+    // Navigation Logic
+    function navigateTab(tabId) {
+      const tabs = ['part1', 'part2', 'part3', 'visual', 'rubric'];
+      tabs.forEach(t => {
+        document.getElementById(`tab-${t}-content`).classList.add('hidden');
+        const navBtn = document.getElementById(`nav-${t}`);
+        navBtn.classList.remove('text-blue-400', 'border-blue-500');
+        navBtn.classList.add('text-slate-400', 'border-transparent');
+      });
+      document.getElementById(`tab-${tabId}-content`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`nav-${tabId}`);
+      activeBtn.classList.add('text-blue-400', 'border-blue-500');
+      activeBtn.classList.remove('text-slate-400', 'border-transparent');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ================= DATA 1: COMPLETE FLASHCARDS (34 TERMS) =================
+    const flashcardsData = [
+      // Formal Film Vocabulary
+      {
+        id: "misescene",
+        category: "formal",
+        term: "Mise-en-scène",
+        ko: "미장센 (화면 내 모든 시각적 요소의 배치)",
+        frontHint: "What appears before the camera and how it is organized.",
+        def: "Mise-en-scène (French for 'placing on stage') encompasses everything visible before the camera and its spatial composition—including setting, props, costume, lighting, and figure staging.",
+        scene: "In Park Chan-wook's Oldboy, Dae-su's 15-year solitary hotel cell is defined by sickly green geometric wallpaper, dim low-key lighting, and a single television set.",
+        why: "It visually externalizes character psychology, atmospheric claustrophobia, and moral corruption without relying on expository dialogue."
+      },
+      {
+        id: "shotscale",
+        category: "formal",
+        term: "Shot Scale (Framing)",
+        ko: "샷 스케일 / 프레이밍 (인물과 배경의 거리 비율)",
+        frontHint: "Distance relationship: EWS, Long Shot, Medium Shot, Close-up, ECU.",
+        def: "Shot scale refers to the apparent distance between the camera lens and the subject, categorized systematically from Extreme Wide Shot to Extreme Close-Up.",
+        scene: "In Taegukgi, Kang Je-gyu cuts from an extreme wide establishing shot of the chaotic Pyongyang battlefield directly to a suffocating close-up of Jin-tae's blood-spattered face.",
+        why: "It modulates spectator empathy, alternating between grand historical spectacle and raw, intimate psychological trauma."
+      },
+      {
+        id: "cameraangle",
+        category: "formal",
+        term: "Camera Angle",
+        ko: "카메라 앵글 (피사체를 바라보는 수직/수평 각도)",
+        frontHint: "Eye-level, low angle, high angle, canted/Dutch tilt.",
+        def: "Camera angle refers to the vertical and horizontal orientation of the camera relative to the subject (eye-level, low angle, high angle, or Dutch tilt).",
+        scene: "In The Host, Bong Joon-ho frames the monster dangling from the bridge from a towering low angle, while filming fleeing Korean civilians from high angles looking down.",
+        why: "Angles encode ideological power relations, rendering subjects either dominating and menacing or vulnerable and helpless."
+      },
+      {
+        id: "handheld",
+        category: "formal",
+        term: "Handheld Camera Movement",
+        ko: "핸드헬드 카메라 (손으로 들고 흔들리게 촬영하는 기법)",
+        frontHint: "Kinetic, unstable, shaky camera operation.",
+        def: "A mobile cinematography technique where the operator physically holds the camera without stabilizing rigs, generating a jerky, erratic, and kinetic frame.",
+        scene: "In Train to Busan, Yeon Sang-ho utilizes handheld cameras inside the narrow KTX passenger cars as the infected swarm through doors.",
+        why: "It generates visceral documentary realism, spatial panic, and chaotic immediacy, forcing the audience into the physical claustrophobia of survival."
+      },
+      {
+        id: "tracking",
+        category: "formal",
+        term: "Tracking Shot (Dolly)",
+        ko: "트래킹 샷 / 달리 샷 (물리적 카메라 이동)",
+        frontHint: "Physical camera movement through 3D space.",
+        def: "A shot where the camera physically moves through three-dimensional space on tracks, a wheeled cart (dolly), or a Steadicam alongside or behind characters.",
+        scene: "In Oldboy, the famous corridor battle is filmed in an unbroken, horizontal tracking shot moving smoothly from left to right along the hallway.",
+        why: "It preserves unbroken spatial and temporal continuity, transforming graphic violence into an agonizing, theatrical tableau of physical exhaustion."
+      },
+      {
+        id: "longtake",
+        category: "formal",
+        term: "Long Take",
+        ko: "롱 테이크 (편집 없이 길게 지속되는 단일 샷)",
+        frontHint: "Uninterrupted shot of extended duration.",
+        def: "A shot of exceptionally prolonged duration that unfolds continuously without a single editorial cut.",
+        scene: "In Burning, Lee Chang-dong captures Hae-mi dancing topless at twilight against the Paju mountains and border loudspeakers in an uninterrupted long take.",
+        why: "It preserves real-time duration, compelling the spectator to experience unmediated temporal reality and fragile existential longing."
+      },
+      {
+        id: "asl",
+        category: "formal",
+        term: "Cutting Rate (Average Shot Length - ASL)",
+        ko: "커팅 속도 / 평균 샷 길이",
+        def: "The frequency of editorial cuts within a scene; high cutting rates denote brief shot lengths (low ASL), whereas low cutting rates prolong individual shots.",
+        scene: "In Taegukgi, Kang Je-gyu accelerates the cutting rate to rapid fractions of a second during combat, but radically slows the ASL during the brothers' tearful reunion.",
+        why: "It controls the spectator's physiological pulse, alternating between adrenaline-fueled disorientation and solemn emotional contemplation."
+      },
+      {
+        id: "rhythmicediting",
+        category: "formal",
+        term: "Rhythmic Editing",
+        ko: "리드미컬한 편집 (음악/비트에 맞춘 편집)",
+        def: "An editing practice where the physical length of shots and transitions is dictated by an acoustic rhythm, musical beat, or physical movement pattern.",
+        scene: "In Chunhyang, Im Kwon-taek synchronizes visual cuts precisely to the gosu's drum strikes (buk) and the pansori singer Cho Sang-hyun's vocal inflections.",
+        why: "It integrates traditional Korean oral storytelling into cinematic syntax, transforming modern film editing into a rhythmic traditional performance."
+      },
+      {
+        id: "soundbridge",
+        category: "formal",
+        term: "Sound Bridge",
+        ko: "사운드 브릿지 (장면 전환을 가로지르는 음향 연결)",
+        def: "An audio transition where sound from one scene carries over into the next visual scene, or sound from the upcoming scene begins prior to the visual cut (L-cut / J-cut).",
+        scene: "In The Host, the sickening sound of formaldehyde splashing down the American morgue sink continues seamlessly over the cut to the sunny Han River.",
+        why: "It establishes an undeniable causal and ideological link between imperial military pollution and the ecological emergence of the monster."
+      },
+      {
+        id: "diegetic",
+        category: "formal",
+        term: "Diegetic vs Non-Diegetic Sound",
+        ko: "디제틱(작중 세계 내) vs 논디제틱(외부 삽입) 사운드",
+        def: "Diegetic sound originates within the narrative world and can be heard by characters (dialogue, radio); non-diegetic sound originates outside the diegesis (orchestral score).",
+        scene: "In Oldboy, Vivaldi's classical violin concerto plays non-diegetically over the intense diegetic grunts, punches, and hammer strikes of the corridor brawl.",
+        why: "This ironic sonic counterpoint aestheticizes graphic brutality, underscoring the tragic, operatic artificiality of Woo-jin's orchestrated vengeance."
+      },
+      {
+        id: "miseabyme",
+        category: "formal",
+        term: "Frame Narrative (Mise en abyme)",
+        ko: "액자식 서사 / 미장 아빔 (이야기 속의 이야기)",
+        def: "A reflexive 'story within a story' structure where an outer narrative encloses, mirrors, or comments upon an inner tale.",
+        scene: "In Chunhyang, the film opens and closes with a modern theater audience in Seoul watching a live pansori performance, framing the Joseon-era romance.",
+        why: "It exposes the theatrical, constructed nature of historical folklore, reminding viewers that tradition is performatively mediated for modern consumption."
+      },
+      {
+        id: "genreconvention",
+        category: "formal",
+        term: "Genre Convention",
+        ko: "장르적 관습 (특정 장르의 약속된 문법과 도상학)",
+        def: "The established tropes, narrative formulas, iconography, and visual expectations associated with a specific cinematic genre.",
+        scene: "In Train to Busan, Yeon Sang-ho adopts Hollywood zombie conventions (contagion by biting, quarantine zones) but infuses them with Korean filial melodrama.",
+        why: "Localizing and subverting global conventions allows filmmakers to critique domestic societal failures while commanding broad international appeal."
+      },
+
+      // Week 1 & 2: The Host / Global Contexts
+      {
+        id: "screenquota",
+        category: "w12",
+        term: "Screen Quota System",
+        ko: "스크린 쿼터제 (한국 영화 의무 상영 일수)",
+        def: "A South Korean protectionist policy legally requiring domestic cinemas to screen Korean films for a mandatory minimum number of days annually (historically 146 days).",
+        scene: "Analyzed by Jinhee Choi, the quota shielded domestic filmmakers from Hollywood monopolies, creating an industrial incubator for the 1990s Renaissance.",
+        why: "It transformed movie theaters into a political battleground between national cultural sovereignty and neoliberal American trade liberalization."
+      },
+      {
+        id: "386gen",
+        category: "w12",
+        term: "The 386 Generation (386세대)",
+        ko: "386 세대 (30대, 80년대 학번, 60년대생 영화인들)",
+        def: "South Koreans who were in their 30s during the 1990s, attended university in the 1980s during the democratization struggles against military dictatorship, and were born in the 1960s.",
+        scene: "Filmmakers like Bong Joon-ho brought their 1980s student-movement skepticism of authoritarian government and US complicity into mainstream genre films like The Host.",
+        why: "Their political memory transformed South Korean commercial cinema into a potent instrument of progressive social satire."
+      },
+      {
+        id: "renaissance",
+        category: "w12",
+        term: "The Korean Film Renaissance",
+        ko: "한국 영화 르네상스 (1990년대 후반~2000년대 부흥)",
+        def: "The flourishing of South Korean cinema starting in the late 1990s, characterized by technological sophistication, box-office dominance, and global critical acclaim.",
+        scene: "Films like Shiri (1999), JSA (2000), Oldboy (2003), and The Host (2006) achieved domestic commercial hegemony through chaebol capital and screen quotas.",
+        why: "It proved that a national cinema could achieve Hollywood-level production values without sacrificing distinctive local political critique."
+      },
+      {
+        id: "transnational",
+        category: "w12",
+        term: "Transnational Genre (Christina Klein)",
+        ko: "초국가적 장르 (크리스티나 클라인)",
+        def: "Christina Klein's concept describing how non-Western cinemas adopt globally recognized Hollywood genre formulas while re-inflecting them with local cultural trauma.",
+        scene: "In The Host, Bong Joon-ho adopts the American creature feature format but roots the monster's genesis in the real-life 2000 US military McFarland formaldehyde incident.",
+        why: "It allows a film to travel across global markets while retaining biting, localized critiques of American hegemony and domestic state failure."
+      },
+      {
+        id: "surfacedeep",
+        category: "w12",
+        term: "Surface Crime vs Deep Crime (Klein)",
+        ko: "표면적 범죄 vs 심층적 범죄 (클라인 - 괴물)",
+        def: "Klein's distinction where the 'surface crime' is the visible spectacle/disaster, while the 'deep crime' is the underlying systemic violence and state complicity.",
+        scene: "In The Host, the monster eating citizens is the surface crime; the deep crime is the South Korean state's sycophantic subservience to US bio-weapons ('Agent Yellow') and neglect of working-class families.",
+        why: "It reveals that the true villain is not the biological creature, but the institutional apathy of the neoliberal state apparatus."
+      },
+      {
+        id: "gwoemulhost",
+        category: "w12",
+        term: "Gwoemul vs The Host (Title Claims)",
+        ko: "괴물 vs The Host (두 제목이 주장하는 바)",
+        def: "The divergent ideological implications of the film's Korean title (Gwoemul = Monster) versus its international English title (The Host).",
+        scene: "Gwoemul emphasizes the grotesque biological creature born of state neglect; The Host points ambiguously to a biological viral carrier, the Han River, or South Korea hosting foreign military bases.",
+        why: "The twin titles interrogate whether the real monster is the physical beast or the imperial host-parasite dynamic dominating Korean history."
+      },
+
+      // Week 3: Chunhyang / Tradition
+      {
+        id: "montage",
+        category: "w3",
+        term: "Montage (Sergei Eisenstein / Soviet Montage)",
+        ko: "몽타주 (상충하는 샷들의 충돌을 통한 새로운 의미 창출)",
+        def: "An editing approach where the juxtaposition of contrasting shots produces an intellectual concept or visceral shock greater than the sum of its individual parts.",
+        scene: "In Chunhyang, Im Kwon-taek juxtaposes modern audience reaction shots at Jeongdong Theater with 18th-century lovers' consummation in Namwon.",
+        why: "It conceptually bridges ancient Confucian folklore with modern cinematic spectatorship."
+      },
+      {
+        id: "pansori",
+        category: "w3",
+        term: "P'ansori (판소리)",
+        ko: "판소리 (소리꾼과 고수의 전통 서사 음악 예술)",
+        def: "A traditional Korean performing art of musical storytelling delivered by a single vocalist (sorikkun) and a barrel drummer (gosu).",
+        scene: "In Chunhyang, Cho Sang-hyun's pansori chanting does not merely accompany the visual drama, but serves as the structural engine dictating pacing and camera movement.",
+        why: "It reclaims indigenous oral musicality as a legitimate cinematic syntax against Western narrative conventions."
+      },
+      {
+        id: "tradition",
+        category: "w3",
+        term: "Tradition (as Ideological Construct)",
+        ko: "전통 (이데올로기적 구성물로서의 전통)",
+        def: "Cultural practices and values preserved across generations, critically analyzed as modern retrofits rather than unadulterated historical relics.",
+        scene: "In Chunhyang, traditional Joseon chastity and Confucian fidelity are visually idealized through lavish hanbok costumes and natural landscapes.",
+        why: "Tradition is weaponized to construct a coherent national cultural identity in the face of rapid modern globalization."
+      },
+      {
+        id: "inventedkoreanness",
+        category: "w3",
+        term: "Invented Korean-ness (Hyangjin Lee)",
+        ko: "발명된 한국성 (이향진)",
+        def: "Hyangjin Lee's concept (drawing on Eric Hobsbawm) that national cultural tradition is a modern construct aestheticized for contemporary ideological consumption.",
+        scene: "In Chunhyang, Im Kwon-taek packages an idealized pre-modern Joseon romance to satisfy both Cannes film festival prestige and domestic national pride.",
+        why: "It exposes how national identity is commodified and aestheticized as an authentic cultural product for global markets."
+      },
+      {
+        id: "cannesseoul",
+        category: "w3",
+        term: "Cannes and Seoul as Two Audiences (Lee)",
+        ko: "칸과 서울이라는 이중 관객 (이향진)",
+        def: "The dual address of New Korean Cinema, catering simultaneously to international film festivals ('Cannes') and domestic urban viewers ('Seoul').",
+        scene: "For Cannes, Chunhyang offers exotic, folkloric authenticity and orientalized heritage; for Seoul, it provides validation of high-culture national pride.",
+        why: "It reveals the economic and cultural balancing act required for Korean auteur cinema to survive in global film markets."
+      },
+      {
+        id: "sopyonje",
+        category: "w3",
+        term: "Im Kwon-taek and Sopyonje (1993)",
+        ko: "임권택 감독과 영화 서편제 (1993)",
+        def: "Im Kwon-taek's historic film that became the first Korean film to surpass one million Seoul viewers, sparking a nationwide cultural renaissance of pansori and 'Han'.",
+        scene: "Sopyonje features an iconic five-minute continuous long take of three pansori wanderers singing 'Arirang' while traversing an undulating rural path.",
+        why: "It established Im Kwon-taek as the cinematic custodian of national heritage, paving the way for Chunhyang's competitive screening at Cannes."
+      },
+
+      // Week 4: Taegukgi / Korean Blockbuster
+      {
+        id: "blockbuster",
+        category: "w4",
+        term: "The Korean Blockbuster (K-Blockbuster)",
+        ko: "한국형 블록버스터 (K-Blockbuster)",
+        def: "High-budget, technologically sophisticated, star-driven commercial spectacles pioneered by Kang Je-gyu (Shiri, Taegukgi) in the post-IMF era.",
+        scene: "Taegukgi utilizes massive pyrotechnics, hyper-kinetic editing, and thousands of extras to recreate the Korean War with Hollywood-scale grandeur.",
+        why: "It combines Hollywood spectacle with uniquely Korean historical trauma (national division, filial melodrama) to conquer the domestic box office."
+      },
+      {
+        id: "postimf",
+        category: "w4",
+        term: "Post-IMF Film Industry",
+        ko: "IMF 외환위기 이후 영화산업의 기업화",
+        def: "The industrial restructuring of Korean cinema following the 1997 Asian Financial Crisis, characterized by corporate chaebol capital (CJ, Showbox) and multiplex chains.",
+        scene: "Taegukgi's record-breaking production budget and distribution across vertically integrated multiplexes exemplified this new corporate industrial model.",
+        why: "It replaced artisanal film financing with rigorous market rationality, maximizing profitability through high-concept genre filmmaking."
+      },
+      {
+        id: "anticommunist",
+        category: "w4",
+        term: "The Anticommunist Film (and its Revision)",
+        ko: "반공영화의 관습과 태극기 휘날리며의 전복",
+        def: "Authoritarian-era state-sponsored propaganda films demonizing North Koreans; revised by modern cinema into a critique of war's mutual inhumanity.",
+        scene: "In Taegukgi, South Korean anti-communist militias brutally execute innocent civilians, including Jin-seok's fiancée Young-shin, for accepting communist food rations.",
+        why: "It dismantles the Cold War binary myth of South Korean moral purity, revealing that the true enemy is the dehumanizing machinery of war itself."
+      },
+      {
+        id: "transientmonument",
+        category: "w4",
+        term: "Transient Monument (Youngmin Choe)",
+        ko: "유동적/가변적 기념비 (최영민)",
+        def: "Youngmin Choe's theoretical concept positing that commercial cinema functions as a dynamic, sensory memorial rather than a static stone monument.",
+        scene: "Taegukgi acts as a transient monument by re-animating the sensory flesh, screams, and blood of the Korean War, later commodified as tourist filming sets.",
+        why: "It allows traumatic national memory to be continually experienced affectively, mourned, and consumed as popular entertainment."
+      },
+      {
+        id: "excavationframe",
+        category: "w4",
+        term: "The Excavation Frame (Taegukgi)",
+        ko: "발굴 프레임 (태극기 휘날리며 오프닝/엔딩)",
+        def: "The narrative prologue and epilogue of Taegukgi set in the contemporary DMZ archaeological recovery site where elderly Jin-seok views excavated war remains.",
+        scene: "When the modern forensic team unearths Jin-tae's skeletal remains alongside the carved fountain pen, the narrative collapses 50 years of historical distance.",
+        why: "It grounds grand epic war action in unresolved, living personal bereavement and unfinished national mourning for the partitioned peninsula."
+      },
+
+      // Week 5: Train to Busan / K-Zombie
+      {
+        id: "fastzombie",
+        category: "w5",
+        term: "The Fast Zombie & Hallyu Horror",
+        ko: "질주하는 좀비 & 한류 호러",
+        def: "The mutation of Western shambling zombies into hyper-kinetic, sprint-velocity swarms within South Korean horror cinema.",
+        scene: "In Train to Busan, the infected sprint furiously, cascading over barriers and piling onto moving trains like a tidal wave of biological fury.",
+        why: "As Sung-Ae Lee argues, the fast zombie embodies the relentless, cutthroat speed of South Korea's hyper-competitive neoliberal compressed modernization."
+      },
+      {
+        id: "redemptionscript",
+        category: "w5",
+        term: "Redemption Script (Sung-Ae Lee)",
+        ko: "구원 각본 (성애 리)",
+        def: "A narrative arc where an unethical, self-serving male capitalist protagonist undergoes moral purification through heroic self-sacrifice during a societal crisis.",
+        scene: "Fund manager Seok-woo in Train to Busan starts by advising his daughter to abandon others, but dies sacrificing himself to ensure the survival of his daughter and a pregnant woman.",
+        why: "It reconstitutes patriarchal moral authority, reassuring audiences that familial love can heal systemic social fractures."
+      },
+      {
+        id: "nationfamily",
+        category: "w5",
+        term: "'The Nation is a Family' (Sung-Ae Lee)",
+        ko: "'국가는 곧 가족이다' (성애 리)",
+        def: "The classic Korean melodramatic trope mapping national survival onto the integrity of the patriarchal family unit.",
+        scene: "In Train to Busan, the traditional bourgeois family fractures, leaving an alternative family unit (a pregnant mother and an orphaned girl) as the sole survivors.",
+        why: "It critiques the failure of the patriarchal state while maintaining hope for a reconstructed, maternal community."
+      },
+      {
+        id: "barelife",
+        category: "w5",
+        term: "Bare Life (Giorgio Agamben)",
+        ko: "벌거벗은 생명 / 호모 사케르 (조르조 아감벤)",
+        def: "Giorgio Agamben's political philosophy concept describing biological human life (zoe) stripped of all legal, citizenship, and political rights by a state of exception.",
+        scene: "In Train to Busan, the bourgeois passengers in Car 15 lock out outside survivors, and the government declares martial law zones where citizens can be shot with impunity.",
+        why: "It critiques how neoliberal crises allow the state and elite bourgeoisie to treat vulnerable citizens as disposable bio-hazards."
+      },
+
+      // Week 6: Oldboy / Violence
+      {
+        id: "zizekviolence",
+        category: "w6",
+        term: "Subjective vs Systemic Violence (Žižek)",
+        ko: "주관적 폭력 vs 체제적 폭력 (슬라보예 지젝)",
+        def: "Slavoj Žižek's distinction between visible, shocking acts of physical force ('subjective violence') and the invisible, structural violence embedded in economic, legal, and social systems ('systemic violence').",
+        scene: "Oldboy showcases graphic subjective violence (teeth extraction, hallway hammer brawl), but Woo-jin's 15-year solitary cage and surveillance matrix represent systemic violence.",
+        why: "It proves that sensational cinematic gore is merely a symptom of deeper, hidden institutional power."
+      },
+      {
+        id: "evilofapathy",
+        category: "w6",
+        term: "The Evil of Apathy (Chungmoo Choi)",
+        ko: "무관심의 악 (최정무 - 올드보이)",
+        def: "Chungmoo Choi's ethical concept that profound tragedy stems not from active malice, but from thoughtless indifference and callous bystander chatter.",
+        scene: "In Oldboy, Dae-su casually gossips about Woo-jin's incestuous romance in high school and promptly forgets it, while the rumor leads directly to Soo-ah's suicide and Woo-jin's lifelong agony.",
+        why: "It underscores that the most destructive historical trauma is born from casual, everyday thoughtlessness and collective amnesia."
+      },
+      {
+        id: "remembranceforgetting",
+        category: "w6",
+        term: "Remembrance and Forgetting",
+        ko: "기억과 망각 (올드보이)",
+        def: "The psychological and philosophical conflict between obsessive preservation of historical trauma and the voluntary erasure of painful guilt.",
+        scene: "Woo-jin is trapped in obsessive remembrance (a penthouse museum of vengeance), while Dae-su submits to hypnosis at the snowy climax to erase the incestuous memory of Mi-do.",
+        why: "Dae-su's final ambiguous smile questions whether ethical redemption is possible through willful historical amnesia."
+      },
+      {
+        id: "colorstyle",
+        category: "w6",
+        term: "Baroque Color Style (Oldboy)",
+        ko: "바로크적 색채 양식 (올드보이)",
+        def: "Park Chan-wook's expressive, non-naturalistic color palette utilizing deep purples, sickly greens, and blood reds.",
+        scene: "The wallpaper inside Woo-jin's penthouse and the prison cell features repeating geometric patterns in muted purple and bilious green.",
+        why: "It creates a suffocating, theatrical aesthetic of moral decadence and obsessive psychological entrapment."
+      },
+
+      // Week 7: Burning / Class & Ambiguity
+      {
+        id: "intertextuality",
+        category: "w7",
+        term: "Intertextuality & Recontextualization (Boman)",
+        ko: "상호텍스트성과 재맥락화 (보만 - 버닝)",
+        def: "Bjorn Boman's framework demonstrating how a film borrows motifs from literary texts and recontextualizes them to critique contemporary socio-economic conditions.",
+        scene: "Lee Chang-dong adapts Haruki Murakami's detached Japanese story 'Barn Burning' and references Faulkner and Gatsby, recontextualizing them into South Korea's youth precariat (Hell Joseon).",
+        why: "It transforms a bourgeois mystery into a searing diagnostic of global class polarization and unemployed youth despair."
+      },
+      {
+        id: "ambiguity",
+        category: "w7",
+        term: "Epistemological Ambiguity (Burning)",
+        ko: "인식론적 모호성 (버닝)",
+        def: "A narrative strategy that deliberately withholds objective narrative confirmation, leaving plot events open to multiple, contradictory interpretations.",
+        scene: "The film never confirms whether Ben murdered Hae-mi, whether the cat 'Boil' truly exists, or whether the final murder is a reality or Jong-su's written manuscript.",
+        why: "It shifts the film's focus from a conventional whodunit thriller to an investigation of spectator prejudice, class anxiety, and masculine paranoia."
+      },
+      {
+        id: "tangerine",
+        category: "w7",
+        term: "Pantomime of the Tangerine (Burning)",
+        ko: "귤 껍질 까기 마임 (버닝 - 존재와 부재)",
+        def: "Hae-mi's pantomime performance where she mimes peeling an imaginary tangerine, explaining: 'Don't think there is a tangerine here; just forget that there isn't one.'",
+        scene: "This philosophical lesson acts as the epistemological key to Burning, echoing whether Ben truly incinerated Hae-mi or if Jong-su imagined it.",
+        why: "It illustrates the film's core theme of ambiguity: reality is constructed by desire, memory, and the erasure of absence."
+      },
+      {
+        id: "hungers",
+        category: "w7",
+        term: "The Little Hunger vs The Great Hunger",
+        ko: "리틀 헝거와 그레이트 헝거 (버닝)",
+        def: "A Kalahari Bushmen philosophy introduced by Hae-mi: 'Little Hunger' is physical hunger for food, while 'Great Hunger' is existential yearning for the meaning of life.",
+        scene: "In Burning, Hae-mi dances naked searching for Great Hunger, Jong-su is trapped in Little Hunger (economic poverty), while the wealthy Ben treats burning greenhouses as aesthetic play.",
+        why: "It articulates the existential alienation of South Korea's working-class youth who yearn for transcendence while trapped in neoliberal precarity."
+      },
+      {
+        id: "genderclass",
+        category: "w7",
+        term: "Gender and Class (Burning)",
+        ko: "젠더와 계급 (버닝 - 여성 청년의 소비와 배제)",
+        def: "The intersectional critique of how working-class women are commodified and marginalized by both hyper-capitalist elites and working-class patriarchy.",
+        scene: "Hae-mi undergoes plastic surgery, incurs credit card debt as a promo dancer, is treated as an exotic accessory by Ben, and is dismissed as a 'whore' by Jong-su.",
+        why: "It exposes how Korean patriarchal capitalism renders vulnerable young women completely disposable and voiceless."
+      }
+    ];
+
+    function renderFlashcards(cards) {
+      const container = document.getElementById('flashcards-grid');
+      container.innerHTML = cards.map(c => `
+        <div class="perspective-1000 h-[360px] cursor-pointer" onclick="toggleCardFlip('${c.id}')">
+          <div id="card-inner-${c.id}" class="relative w-full h-full transform-style-preserve-3d transition-flip shadow-sm hover:shadow-md rounded-2xl">
+            
+            <!-- FRONT OF CARD -->
+            <div class="absolute inset-0 w-full h-full backface-hidden bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${c.category === 'formal' ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'}">
+                    ${c.category === 'formal' ? 'Formal Film Vocabulary' : 'Course Theoretical Concept'}
+                  </span>
+                  <span class="text-xs text-slate-400">클릭하여 뒤집기 ↩️</span>
+                </div>
+                <h3 class="text-xl font-black text-slate-900 mt-2">${c.term}</h3>
+                <p class="text-xs text-slate-500 font-medium mt-1">${c.ko}</p>
+              </div>
+
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs text-slate-600">
+                <span class="font-bold text-slate-700 block mb-1">💡 핵심 프롬프트:</span>
+                3~4문장으로 정의하고, 구체적 영화/논문 장면을 연결하며, 그것이 왜 중요한지(Why it matters) 설명하시오.
+              </div>
+
+              <div class="flex items-center justify-between text-[11px] text-blue-600 font-semibold border-t border-slate-100 pt-2">
+                <span>3-Sentence Formula Ready</span>
+                <span>Click to Flip →</span>
+              </div>
+            </div>
+
+            <!-- BACK OF CARD (3-SENTENCE FORMULA ANSWER) -->
+            <div class="absolute inset-0 w-full h-full backface-hidden rotate-y-180 bg-slate-900 text-white rounded-2xl p-5 flex flex-col justify-between overflow-y-auto">
+              <div>
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                  <h4 class="text-sm font-bold text-amber-400">${c.term}</h4>
+                  <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded">3/3 Full Marks</span>
+                </div>
+                
+                <div class="space-y-2.5 text-xs text-slate-300">
+                  <div>
+                    <span class="text-blue-400 font-bold block">1. Accurate Definition:</span>
+                    <p class="leading-relaxed">${c.def}</p>
+                  </div>
+                  <div>
+                    <span class="text-purple-400 font-bold block">2. Film Scene / Reading:</span>
+                    <p class="leading-relaxed">${c.scene}</p>
+                  </div>
+                  <div>
+                    <span class="text-emerald-400 font-bold block">3. Why it matters:</span>
+                    <p class="leading-relaxed">${c.why}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-t border-slate-800 pt-2 flex items-center justify-between text-[10px] text-slate-400">
+                <span>Part 1 만점 공식 준수</span>
+                <span class="text-amber-400">다시 클릭하여 앞면으로 ↩️</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleCardFlip(id) {
+      const card = document.getElementById(`card-inner-${id}`);
+      card.classList.toggle('card-flipped');
+    }
+
+    let allFlipped = false;
+    function flipAllCards() {
+      allFlipped = !allFlipped;
+      flashcardsData.forEach(c => {
+        const card = document.getElementById(`card-inner-${c.id}`);
+        if (card) {
+          if (allFlipped) card.classList.add('card-flipped');
+          else card.classList.remove('card-flipped');
+        }
+      });
+    }
+
+    function filterFlashcards() {
+      const q = document.getElementById('fc-search').value.toLowerCase();
+      const cat = document.getElementById('fc-category').value;
+      const filtered = flashcardsData.filter(c => {
+        const matchesQuery = c.term.toLowerCase().includes(q) || c.ko.toLowerCase().includes(q) || c.def.toLowerCase().includes(q) || c.scene.toLowerCase().includes(q);
+        const matchesCat = cat === 'all' || c.category === cat;
+        return matchesQuery && matchesCat;
+      });
+      renderFlashcards(filtered);
+    }
+
+    // ================= DATA 2: 6 CANDIDATE PRACTICE CLIPS =================
+    const practiceClips = [
+      {
+        id: 1,
+        title: "The Host (2006): Morgue Prologue & Daylight River Attack",
+        director: "Bong Joon-ho",
+        image: "Morgue: Dim fluorescent low-key lighting, clinical green-gray color, tight medium two-shot of American military officer and Korean subordinate.<br>River: High-key daylight, extreme wide establishing shot of Han River, sudden kinetic handheld tracking following terrified fleeing citizens; low-angle shot of creature dangling from bridge.",
+        editing: "Morgue: Seamless continuity editing focusing on chemical disposal down the drain.<br>River: Rapid cutting rate (short ASL) breaking the peaceful Sunday afternoon rhythm; kinetic match-on-action tracking Gang-du and Hyun-seo running.",
+        sound: "Morgue: Diegetic sloshing of toxic chemicals; sound bridge carries liquid splashes directly over the cut to the peaceful Han River.<br>River: Diegetic screaming, monstrous roars, water splashes, and an ironic upbeat brass-orchestral score.",
+        claim: "In both sequences, Bong Joon-ho deploys formal contrast—moving from clinical low-key confinement in the morgue to chaotic, bright-daylight tracking shots on the riverbank—to subvert conventional monster movie tropes and expose systemic imperial and state violence.",
+        elements: "First, regarding the visual image, the low-angle framing of the American officer establishes imperial hierarchy, while the bright daylight tracking shot forces spectator intimacy with fleeing Korean families. Second, the rapid acceleration in cutting rate shatters mundane afternoon calm, visualizing the acute kinetic vulnerability of ordinary citizens. Third, the sound bridge of poured formaldehyde directly connects US military negligence with the ecological birth of the creature.",
+        reading: "This formal construction directly enacts Christina Klein's concept of 'surface crime versus deep crime': the monster attack is merely the surface spectacle, while the morgue chemical disposal represents the deep crime of American imperial impunity and South Korean state complicity.",
+        questionAns: "Regarding whether the film is anti-American: the clip demonstrates that it is fundamentally a critique of dual complicity—the American military issues the reckless order, but the subservient South Korean state executes and conceals it, abandoning its citizens."
+      },
+      {
+        id: 2,
+        title: "Chunhyang (2000): Jeongdong Theater Stage Opening",
+        director: "Im Kwon-taek",
+        image: "Begins in modern Seoul at the Jeongdong Theater with an eye-level medium long shot of pansori singer Cho Sang-hyun and his drummer (gosu) on stage under bright theatrical spotlights.<br>Cuts abruptly to lush 18th-century Joseon dynasty Namwon: vibrant primary hanbok colors, natural deep space composition, rural pavilion.",
+        editing: "Rhythmic editing strictly synchronized to the drummer's wooden drumbeats (buk) and the sorikkun's vocal cadence.<br>Elliptical transition cut from modern theater stage into the Joseon landscape without a fade, constructing a seamless frame narrative (mise en abyme).",
+        sound: "Diegetic live pansori chanting and drumming begins on stage, then transforms seamlessly into an overarching extradiegetic vocal narrator guiding the visual Joseon drama.",
+        claim: "Im Kwon-taek utilizes a theatrical frame narrative and rhythmic editing synchronized to pansori singing to formally expose national tradition not as an ancient museum relic, but as an ongoing performative construction.",
+        elements: "First, the visual framing of the modern proscenium arch foregrounds the artificiality of historical storytelling before transporting viewers to historical Namwon. Second, the editorial cuts adhere strictly to the sorikkun's vocal cadence, merging folk oral meter with cinematic temporality. Third, Cho Sang-hyun's rasping vocal delivery acts as an acoustic sound bridge uniting modern spectators with feudal melodrama.",
+        reading: "This cinematic structure exemplifies Hyangjin Lee's concept of 'invented Korean-ness' and the dual address to 'Cannes and Seoul as two audiences': packaging exotic folkloric authenticity for the global festival circuit while validating high-culture heritage for domestic viewers.",
+        questionAns: "In response to whether the film carries traditional values without losing context: the theatrical frame narrative ensures modern audiences maintain critical distance, recognizing tradition as a self-conscious performance rather than naive dogma."
+      },
+      {
+        id: 3,
+        title: "Taegukgi (2004): Modern DMZ Archaeological Excavation Frame",
+        director: "Kang Je-gyu",
+        image: "Contemporary DMZ archaeological site: cold, desaturated gray-brown lighting.<br>Extreme wide shot of forensic trenches swarming with military personnel, followed by a slow push-in shallow-focus close-up of elderly Jin-seok's trembling hands and wrinkled eyes as he uncovers the rusted, hand-carved fountain pen.",
+        editing: "Slow cutting rate (long ASL) in the modern frame, establishing stark temporal gravity that contrasts with the rapid montage of battle sequences.<br>Dissolve transition bridging the rusted pen to its shiny pre-war origin.",
+        sound: "Somber, low non-diegetic orchestral strings blending with ambient mountain wind.<br>Sudden acoustic silence when Jin-seok touches the skeletal remains, magnifying his choked, weeping gasp.",
+        claim: "Kang Je-gyu frames the visceral spectacle of fratricidal war within a solemn contemporary archaeological excavation to transform private brotherly guilt into an unresolved national site of mourning.",
+        elements: "First, a shallow-focus close-up isolates Jin-seok's emotional breakdown, blurring out the forensic team in the background. Second, the desaturated, gray-brown color palette strips away military triumphalism, emphasizing biological decay and historical erasure. Third, the non-diegetic orchestral lament drowns out modern dialogue, elevating personal grief into a national tragedy.",
+        reading: "This sequence directly applies Youngmin Choe's theory of the 'transient monument': cinema functioning as a kinetic memorial where historical trauma is reactivated through sensory artifacts rather than frozen state monuments.",
+        questionAns: "Does Taegukgi revise the anticommunist film? Yes; by anchoring the war in an excavation of ruined fraternal love rather than ideological victory, the frame reveals both Korean states as tragic victims of war's dehumanizing machinery."
+      },
+      {
+        id: 4,
+        title: "Train to Busan (2016): Checkpoint Opening & Reanimated Deer",
+        director: "Yeon Sang-ho",
+        image: "Sterile, cold-toned quarantine checkpoint with hazmat-suited workers spraying chemical disinfectants.<br>Medium shot of a frustrated truck driver arguing with officials.<br>Low-angle tracking shot of the truck speeding down a rural highway, striking a deer. Extreme close-up of the dead deer's milky-white eye snapping open as it stands up unnaturally.",
+        editing: "Controlled, slow continuity editing during the bureaucratic checkpoint, shattered by the violent collision cut.<br>Elliptical, jerky cuts capturing the unnatural bone-snapping reanimation of the deer.",
+        sound: "Diegetic hissing of disinfectant sprayers, harsh mechanical engine revs, sudden sickening crunch of impact, followed by eerie, unnatural bone-cracking sound effects as the deer reanimates.",
+        claim: "Yeon Sang-ho juxtaposes bureaucratic bio-security incompetence with the horrifying speed of the reanimated deer to formally establish the failure of the neoliberal state apparatus before the train even departs.",
+        elements: "First, the desaturated, sterile gray lighting of the checkpoint visually conveys institutional alienation and false safety. Second, the low-angle framing of the reanimated deer magnifies unnatural monstrous agency in a creature normally symbolic of innocence. Third, the bone-cracking Foley sound effects signal kinetic, aggressive biological mutation (the fast zombie).",
+        reading: "This sequence introduces Giorgio Agamben's concept of 'bare life' within a state of exception: bureaucratic quarantine protocols fail to protect life, instead treating citizens and nature as disposable bio-hazards.",
+        questionAns: "Does the opening critique political problems? Yes; the truck driver's casual dismissal of quarantine orders mirrors corporate deregulation and state complacency, prefiguring the national disaster."
+      },
+      {
+        id: 5,
+        title: "Oldboy (2003): Penthouse Confrontation (Dae-su & Woo-jin)",
+        director: "Park Chan-wook",
+        image: "Hyper-symmetrical, clinical mise-en-scène inside Woo-jin's opulent penthouse apartment.<br>Controlled low-key lighting with polished reflective surfaces mirroring characters.<br>Extreme close-ups of Dae-su's desperate face, scissors, and severed tongue contrasted with medium two-shots showing Woo-jin's cold, tailored posture.",
+        editing: "Rapid, disjunctive montage during the revelation of the photo album, intercutting Dae-su's high school past with his present humiliation, punctuated by match cuts and whip pans.",
+        sound: "Lush, operatic non-diegetic strings (Cries and Whispers) played against harsh diegetic wet scissor cuts, Dae-su's muffled groans, and the clinical click of the tape recorder.",
+        claim: "Park Chan-wook utilizes baroque mise-en-scène, graphic match cutting, and operatic contrapuntal music to reveal that Dae-su's sensational physical revenge is entirely subordinated to Woo-jin's psychological trap of incest and guilt.",
+        elements: "First, the severe geometric symmetry of Woo-jin's apartment visually embodies his absolute architectural control over Dae-su's fate. Second, extreme close-up framing isolates Dae-su groveling like a dog, physically externalizing his total moral humiliation. Third, the elegant classical waltz playing over self-mutilation creates sickening aesthetic pleasure, implicating the spectator in the violence.",
+        reading: "This directly illustrates Slavoj Žižek's concept of 'subjective violence versus systemic violence' and Chungmoo Choi's 'evil of apathy': Dae-su's graphic bodily sacrifice cannot erase the systemic destruction caused by his forgotten high school gossip.",
+        questionAns: "Is the violence ethical? Park Chan-wook films the violence operatically not to celebrate sadism, but to confront the spectator with the sickening price of obsessive vengeance."
+      },
+      {
+        id: 6,
+        title: "Burning (2018): Hae-mi's Sunset Pantomime Dance",
+        director: "Lee Chang-dong",
+        image: "Magic hour twilight backlighting.<br>Extreme wide shot of the rural yard at Paju, framing Hae-mi's naked silhouette against the fading sunset, shadowed mountains, and North Korean border propaganda towers.<br>Deep space composition positioning Jong-su and Ben as seated spectators in the dark foreground.",
+        editing: "Extended uninterrupted long take.<br>The camera pans gently and floats with Hae-mi's swaying arms without cutting, letting real temporal duration unfold.",
+        sound: "Miles Davis's melancholic trumpet jazz (Générique) playing non-diegetically, blending seamlessly with the faint diegetic rustle of the evening wind and distant border loudspeaker murmurs.",
+        claim: "Lee Chang-dong uses an unbroken twilight long take and silhouette framing to transform Hae-mi's pantomime dance into a poignant visual manifestation of the 'Great Hunger'—trapping her fragile existential longing between class spectatorship and geopolitical division.",
+        elements: "First, natural twilight backlighting strips away Hae-mi's physical clothing, rendering her a pure silhouette yearning for transcendence. Second, the mobile long take respects the integrity of her performance, refusing to objectify her body through fragmented close-up editing. Third, the collision of Miles Davis's jazz with border propaganda broadcasts underlines the clash between global bourgeois culture and Korean political tension.",
+        reading: "This sequence exemplifies the philosophical distinction between 'Little Hunger' and 'Great Hunger' (Boman's intertextuality): Hae-mi seeks existential meaning, while the wealthy Ben yawns with cynical detachment and Jong-su watches with sexual and class anxiety.",
+        questionAns: "Does the scene empower or exploit Hae-mi? The long take grants her body agency and aesthetic transcendence, even as the patriarchal gaze of the two male onlookers prefigures her imminent disappearance."
+      }
+    ];
+
+    function renderClipButtons() {
+      const bar = document.getElementById('clip-tabs-bar');
+      bar.innerHTML = practiceClips.map((c, idx) => `
+        <button onclick="displayClip(${c.id})" id="btn-clip-${c.id}" class="px-3 py-1.5 rounded-lg text-xs font-bold transition ${idx === 0 ? 'bg-purple-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}">
+          ${idx + 1}. ${c.title.split(':')[0]}
+        </button>
+      `).join('');
+    }
+
+    function displayClip(id) {
+      practiceClips.forEach(c => {
+        const btn = document.getElementById(`btn-clip-${c.id}`);
+        if (c.id === id) {
+          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-purple-600 text-white shadow-sm transition";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+        }
+      });
+
+      const clip = practiceClips.find(c => c.id === id);
+      const container = document.getElementById('clip-display-area');
+      container.innerHTML = `
+        <div class="space-y-5 animate-fadeIn">
+          <div class="border-b border-slate-200 pb-3 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h4 class="text-base sm:text-lg font-black text-slate-900">${clip.title}</h4>
+              <span class="text-xs text-purple-600 font-bold">Directed by ${clip.director}</span>
+            </div>
+            <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-black rounded-lg">15/15 Full Marks Model</span>
+          </div>
+
+          <!-- 3-Column Note Simulation -->
+          <div class="bg-slate-900 text-white p-4 rounded-xl">
+            <span class="text-[11px] font-bold text-amber-400 block mb-2 uppercase tracking-wider">클립 2회 상영 시 3열 필기 요약:</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-mono">
+              <div class="bg-slate-800 p-3 rounded-lg border border-slate-700">
+                <strong class="text-blue-400 block mb-1">📷 1. IMAGE:</strong>
+                <p class="text-slate-300 leading-relaxed">${clip.image}</p>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-lg border border-slate-700">
+                <strong class="text-purple-400 block mb-1">✂️ 2. EDITING:</strong>
+                <p class="text-slate-300 leading-relaxed">${clip.editing}</p>
+              </div>
+              <div class="bg-slate-800 p-3 rounded-lg border border-slate-700">
+                <strong class="text-emerald-400 block mb-1">🔊 3. SOUND:</strong>
+                <p class="text-slate-300 leading-relaxed">${clip.sound}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Master Model Answer -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-3">
+            <h5 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">📝 시험장에 그대로 쓸 영문 완성 답안 (Ready-to-Write English Answer):</h5>
+            
+            <div class="p-3 bg-white rounded-lg border-l-4 border-blue-600 text-xs sm:text-sm">
+              <strong class="text-blue-700 block mb-0.5">[1. The Claim]:</strong>
+              <p class="font-medium text-slate-800">"${clip.claim}"</p>
+            </div>
+
+            <div class="p-3 bg-white rounded-lg border-l-4 border-purple-600 text-xs sm:text-sm">
+              <strong class="text-purple-700 block mb-0.5">[2-4. Three Formal Elements Tied to Moments]:</strong>
+              <p class="text-slate-700 leading-relaxed">${clip.elements}</p>
+            </div>
+
+            <div class="p-3 bg-white rounded-lg border-l-4 border-amber-600 text-xs sm:text-sm">
+              <strong class="text-amber-700 block mb-0.5">[5. Course Reading & Concept Hook]:</strong>
+              <p class="text-slate-700 leading-relaxed">${clip.reading}</p>
+            </div>
+
+            <div class="p-3 bg-white rounded-lg border-l-4 border-emerald-600 text-xs sm:text-sm">
+              <strong class="text-emerald-700 block mb-0.5">[6. Direct Answer to Question]:</strong>
+              <p class="text-slate-700 leading-relaxed">${clip.questionAns}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // ================= DATA 3: ALL 8 ESSAYS (THEMES A, B, C) =================
+    const essayThemesData = {
+      themeA: {
+        title: "Theme A. Global Genre, Local Critique, and the Industry",
+        films: "The Host (2006), Taegukgi (2004), Train to Busan (2016), Peninsula (2020)",
+        readings: "Christina Klein, Jinhee Choi, Sung-Ae Lee",
+        prompts: [
+          {
+            id: "A1",
+            q: "To what degree is the Korea-United States dynamic central to the narrative of The Host? Does Klein's textual account or Choi's industrial account explain it better?",
+            koSummary: "괴물(The Host)에서 한미 관계는 표면적인 괴수 서사를 지배하는 핵심 축입니다. 최진희의 산업적 설명(스크린 쿼터, 벤처 캐피털)도 중요하지만, 크리스티나 클라인의 '표면적 범죄 vs 심층적 범죄(Surface vs Deep Crime)' 텍스트 분석이 영화의 서사적 본질을 훨씬 탁월하게 설명합니다. 영화는 할리우드 장르 공식을 빌려 미군의 제국주의적 오만과 이에 굴종하는 한국 국가 기구의 무능을 신랄하게 폭로하기 때문입니다.",
+            keywords: "Transnational genre, Surface crime vs deep crime (Klein), 2000 McFarland formaldehyde incident, Subservient state apparatus, Agent Yellow, Screen quota (Jinhee Choi), 386 generation activism.",
+            thesis: "While Jinhee Choi's industrial account illuminates how the Korean Film Renaissance achieved technological and financial parity through the screen quota and chaebol capital, Christina Klein's textual reading of 'surface crime versus deep crime' provides a superior explanatory framework for The Host, because Bong Joon-ho deploys the Hollywood creature feature precisely to unmask the invisible, systemic violence of American imperial hegemony and the complicit South Korean state apparatus.",
+            scenes: [
+              "Scene 1: The Morgue Prologue. Filmed in clinical, low-key lighting with tight medium two-shots, an arrogant American military officer orders his hesitant Korean subordinate to dump hundreds of bottles of dusty formaldehyde down the drain. A noxious sound bridge carries the splashing chemicals into the Han River, formally establishing environmental toxicity as an imperial imposition.",
+              "Scene 2: The Agent Yellow Climax. High-angle wide shots capture Korean riot police and US bio-hazard contractors spraying yellow toxic gas over unarmed Korean citizens protesting at the Han River. Diegetic hissing of chemical weapons and slow-motion tear gas evoke traumatic collective memories of authoritarian suppression, revealing the state as an agent of violence against its own people."
+            ],
+            essay: `In Bong Joon-ho’s The Host (2006), the geopolitical dynamic between South Korea and the United States is not a mere backdrop, but the foundational engine driving the film's narrative and ideological critique. While Jinhee Choi’s industrial account in The South Korean Film Renaissance crucially contextualizes how protectionist screen quotas and post-IMF corporate restructuring enabled domestic filmmakers to produce high-budget genre blockbusters capable of rivaling Hollywood, Christina Klein’s textual account of the "transnational genre" and "surface crime versus deep crime" provides a vastly superior analysis of the film's dramatic core. Bong Joon-ho appropriates the global monster movie template precisely to camouflage and dissect the ongoing trauma of American military occupation and domestic state subservience.
+
+Klein's framework hinges on the distinction between the visible spectacle of catastrophe ("surface crime") and the underlying institutional culpability ("deep crime"). From its prologue, the film formally anchors the monster’s genesis in historical reality—the 2000 McFarland incident where the US military dumped toxic formaldehyde into the Han River. In this opening scene, Bong utilizes clinical low-key fluorescent lighting and tight medium framing to emphasize the imperial hierarchy between the domineering American mortician and his hesitant Korean subordinate. When the toxic chemicals are poured down the sink, a continuous sound bridge carries the noxious splashing across the visual cut into the peaceful, sunny Han River. Through this formal suture, the film declares that the biological horror to come is the direct material consequence of American imperial extraterritoriality.
+
+Crucially, as Klein argues, the true terror of the film is not the mutated beast eating citizens on the riverbank (the surface crime), but the South Korean state’s complete abandonment of its working-class population to appease American bio-security interests (the deep crime). When Gang-du and his family insist that his daughter Hyun-seo is still alive in the sewers, government officials and medical personnel disregard their testimony, instead subjecting Gang-du to forced lobotomization under false American claims of a contagious biological virus. This institutional violence culminates in the climax at the Han River, where high-angle long shots depict riot police deploying "Agent Yellow"—a blatant visual allegory for Agent Orange—against peaceful demonstrators. The suffocating yellow mist, framed against the iconic cityscape, visually aligns the contemporary democratic state with the traumatic memories of Gwangju and the 386 student protests.
+
+While Choi’s industrial model explains how The Host was financed, produced, and distributed to break domestic box-office records, it is Klein’s textual interrogation that reveals why the film resonated so profoundly with Korean audiences. By fusing Hollywood creature-feature conventions with the political indignation of the 386 generation, Bong Joon-ho demonstrates that the real "host" is South Korea itself, unhappily hosting both a foreign military power and an indifferent, bureaucratic state apparatus that treats its own citizens as collateral damage.`
+          },
+          {
+            id: "A2",
+            q: "What moments in Train to Busan critique Korean social or political problems? Does the father's redemption carry that critique, or takes its place?",
+            koSummary: "부산행(Train to Busan)은 세월호 참사 이후 한국 사회의 국가 기구 불신, 신자유주의적 각자도생, 부르주아 승객들의 계급적 배제를 날카롭게 비판합니다. 그러나 주인공 석우의 '구원 각본(Redemption Script)'은 이 비판을 구조적으로 확장하기보다, 아버지의 숭고한 희생이라는 멜로드라마적 가족주의로 대체(takes its place)하여 체제 비판을 사적 감정으로 환원시키는 양가성을 띱니다.",
+            keywords: "Neoliberal individualism, 'Nation is a family' (Sung-Ae Lee), Redemption script, Bare life (Agamben), Car 15 exclusion scene, Sewol ferry resonance, Fast zombie.",
+            thesis: "Train to Busan initially mounts a devastating formal critique of South Korea's neoliberal competitiveness and institutional abandonment, but ultimately allows the father's sentimental 'redemption script' to displace and soften that systemic critique by subsuming social failure into private patriarchal martyrdom.",
+            scenes: [
+              "Scene 1: The Car 15 Quarantine Exclusion. When Seok-woo and the survivors fight their way back, the bourgeois passengers led by COO Yong-suk physically bar the door. Tight framing and low-angle shots emphasize the barricaded glass door, reducing uninfected working-class survivors to Agamben's 'bare life' to preserve elite self-interest.",
+              "Scene 2: The Final Shadow Sacrifice. As Seok-woo is infected, high-key backlighting casts his dying silhouette against the moving engine as he weeps, remembering his baby daughter. Swelling non-diegetic strings drown out structural social catastrophe in favor of tearful paternal redemption."
+            ],
+            essay: `Yeon Sang-ho’s Train to Busan (2016) operates as a piercing social allegory of contemporary South Korean precarity, reflecting the widespread public disillusionment that followed the 2014 Sewol Ferry disaster and decades of hyper-competitive neoliberal deregulation. While the film forcefully critiques institutional incompetence and the cutthroat ethic of "every man for himself," the narrative trajectory of the father’s moral salvation—what Sung-Ae Lee terms the "redemption script"—ultimately displaces this structural critique, replacing systemic indictment with the comforting emotional catharsis of patriarchal familial sacrifice.
+
+The film’s sociopolitical critique is established through its depiction of institutional failure and class division. Early in the journey, government television broadcasts urge citizens to "stay calm" and claim that the violent riots are under control, even as infected bodies visibly slaughter commuters through the train windows. This stark audiovisual dissonance directly evokes the Sewol tragedy, where state authorities ordered students to stay inside while the ship sank. Furthermore, Yeon visualizes the cruelty of neoliberal capitalism through the bourgeois passengers of Car 15. When working-class survivors fight their way through the infected compartments, COO Yong-suk incites the passengers to barricade the door. Tight medium close-ups of terrified faces behind the glass door visually delineate class segregation, reducing outside survivors to Giorgio Agamben’s "bare life"—biological bodies stripped of rights and left to die for the convenience of the privileged elite.
+
+However, rather than sustaining an interrogation of systemic corporate and political culpability, the second half of the film pivots entirely toward the emotional restoration of Seok-woo’s moral character. At the start, Seok-woo is the quintessential neoliberal parasite—a fund manager who short-sells biopharmaceutical companies and instructs his daughter Su-an to care only for herself. To resolve the narrative, the film relies on Lee’s "redemption script," wherein the father atones for his socio-economic sins through bodily self-sacrifice. 
+
+This ideological displacement culminates in Seok-woo’s death scene on the moving locomotive. Shot in high-key, ethereal backlighting, Seok-woo isolates himself on the engine platform after being bitten. The visual frame dissolves into an idyllic flashback of Seok-woo cradling his infant daughter, accompanied by a soaring, melancholic non-diegetic violin score. The cinematic language shifts entirely from horror-thriller realism to tearful Confucian melodrama. By centering the climax on paternal martyrdom, the film suggests that social trauma can be healed through private familial love and moral renewal, thereby letting the state and corporate elites off the hook. In doing so, Seok-woo’s personal redemption takes the place of systemic critique, restoring the patriarchal myth that the nation’s moral future rests on the emotional sacrifice of its fathers.`
+          },
+          {
+            id: "A3",
+            q: "What makes a Korean blockbuster Korean? Is it the peak of a national cinema, or the start of Korean cinema that no longer needs to be national to be Korean?",
+            koSummary: "한국형 블록버스터(K-blockbuster)를 '한국적'으로 만드는 것은 할리우드식 고예산 특수효과와 편집 속도 위에 분단, 한국전쟁, 가족 멜로드라마라는 고유한 역사적 트라우마를 결합한 점입니다. 이는 폐쇄적 민족 영화의 정점이 아니라, 글로벌 관객에게 유통될 수 있는 탈국가적(Transnational) 영화의 출발점이었습니다.",
+            keywords: "Korean blockbuster, National cinema, Hollywood pyrotechnics, Historical trauma, Melodrama, Jinhee Choi, Post-IMF corporatization.",
+            thesis: "The Korean blockbuster is defined by the hybrid fusion of Hollywood-style kinetic spectacle with distinctively Korean historical trauma and familial melodrama; rather than representing the insular peak of national cinema, it marked the beginning of a transnational cinema that universalizes local trauma into exportable global entertainment.",
+            scenes: [
+              "Scene 1: Shiri / Taegukgi Climax. The use of Hollywood-caliber CGI explosions and rapid cutting rates juxtaposed with brothers shooting each other in tears, grounding commercial spectacle in the national tragedy of partition.",
+              "Scene 2: Train to Busan Global Resonance. Adapting the universal zombie genre while infusing it with Korean filial piety and Sewol ferry political allegories."
+            ],
+            essay: `The phenomenon of the Korean blockbuster (K-blockbuster), pioneered by Kang Je-gyu’s Shiri (1999) and Taegukgi (2004), represents one of the most dynamic industrial and cultural achievements in contemporary world cinema. What makes a Korean blockbuster distinctly "Korean" is neither an insular defense of folklore nor a superficial mimicry of Hollywood, but rather a potent hybridity: the seamless synthesis of American high-concept production values (rapid cutting rates, CGI, pyrotechnics) with deeply localized Korean themes of national partition, collective historical trauma, and intense familial melodrama. Consequently, the K-blockbuster does not represent the insular apex of a self-contained national cinema, but rather the inception of a transnational cinematic form that no longer needs to rely on traditionalist markers to assert its identity.
+
+As Jinhee Choi demonstrates in The South Korean Film Renaissance, the Korean blockbuster emerged from the structural crisis of the 1997 Asian Financial Crisis. Corporate conglomerates (chaebols) and venture capital transformed the industry, adopting Hollywood's vertical integration while seeking local narratives that could command massive domestic audiences. In films like Taegukgi, Kang Je-gyu employs handheld camerawork, desaturated color palettes, and bone-crunching Foley sound design borrowed directly from Saving Private Ryan. Yet, what anchors this kinetic spectacle is the tragedy of brotherhood torn apart by the Korean War. The climax does not celebrate military triumph, but weeps over the fratricidal destruction of family. This emotional core—Han and filial piety—differentiates the K-blockbuster from American triumphalism.
+
+Furthermore, recent iterations like Train to Busan (2016) prove that Korean cinema has evolved into a global vernacular. Yeon Sang-ho adopts the universal Hollywood zombie apocalypse, yet structures the narrative around domestic anxieties of neoliberal competition, Sewol ferry trauma, and Confucian familial duty. The film succeeded internationally not because it exoticized Korean culture, but because it utilized local political indignation to revitalize a tired global genre. Therefore, the K-blockbuster represents the birth of a cinema that is confidently transnational: it uses the formal tools of global capitalism to tell stories that remain profoundly, unmistakably Korean.`
+          }
+        ]
+      },
+      themeB: {
+        title: "Theme B. Tradition, Memory, and the Nation",
+        films: "Chunhyang (Im Kwon-taek, 2000), Taegukgi (Kang Je-gyu, 2004)",
+        readings: "Hyangjin Lee, Youngmin Choe, Jinhee Choi",
+        prompts: [
+          {
+            id: "B1",
+            q: "For whom is Chunhyang's Korean-ness made? Can the film carry traditional values to international audiences without losing their context?",
+            koSummary: "임권택의 춘향뎐에 나타난 '한국성'은 서구 영화제(칸)와 국내 관객(서울)이라는 이중 관객을 겨냥하여 전략적으로 '발명된 한국성(Invented Korean-ness)'입니다. 영화는 판소리 무대 액자 구조(Mise en abyme)를 통해 전통을 박제된 유물이 아닌 현대적 공연 예술로 재해석함으로써, 맥락의 완전한 탈색 없이도 보편적 사랑과 저항의 서사로 국제 관객에게 전달하는 데 성공합니다.",
+            keywords: "Invented Korean-ness (Hyangjin Lee), Cannes vs Seoul dual audience, P'ansori, Jeongdong Theater frame, Mise en abyme, Sopyonje.",
+            thesis: "Chunhyang's 'Korean-ness' is an aestheticized commodity constructed simultaneously for international festival prestige ('Cannes') and domestic cultural pride ('Seoul'); by framing the narrative through a reflexive modern pansori performance, the film successfully translates traditional Confucian values into a universal humanistic aesthetic without completely erasing their historical specificity.",
+            scenes: [
+              "Scene 1: The Jeongdong Theater Opening. The film opens with a contemporary Seoul audience watching master singer Cho Sang-hyun on stage before cutting into Joseon Namwon, visually foregrounding tradition as a conscious modern performance.",
+              "Scene 2: The Flogging of Chunhyang. The violent beating of Chunhyang by the corrupt magistrate is cut in strict rhythmic synchrony with the gosu's drum and the sorikkun's vocal lament, transforming feudal oppression into universal bodily resilience."
+            ],
+            essay: `Im Kwon-taek’s Chunhyang (2000), the first Korean film to enter the official competition at the Cannes Film Festival, serves as a prime case study in the modern negotiation of national cultural identity. As film scholar Hyangjin Lee persuasively argues in "Chunhyang: Marketing an Old Tradition in New Korean Cinema," the film’s distinctive "Korean-ness" is not an untouched, ancient relic unearthed from the Joseon dynasty, but an "invented Korean-ness"—a carefully commodified and aestheticized construct designed to satisfy two vastly different audiences: international film festival curators seeking exotic, authentic folklore ("Cannes") and modern domestic urbanites seeking national cultural pride ("Seoul").
+
+To navigate this dual audience, Im Kwon-taek utilizes the sophisticated formal device of the frame narrative (mise en abyme). The film begins not in the past, but in contemporary Seoul inside the Jeongdong Theater. An eye-level medium long shot captures pansori master Cho Sang-hyun and his drummer on stage before a modern, well-dressed audience. As Cho begins chanting, the camera smoothly cuts into the lush, colorful landscapes of 18th-century Namwon. By establishing this theatrical frame, the film announces that it is not presenting naive historical realism, but a self-conscious performance of tradition. For Cannes, this structure packages pansori as an exotic, sophisticated high-art spectacle; for Seoul, it elevates a familiar folk tale into a prestigious global cultural ambassador.
+
+The question of whether Chunhyang can communicate traditional values to international audiences without losing their context is resolved through its formal mastery of sound and editing. The feudal Confucian virtues of chastity (*yeol*) and absolute loyalty are potentially alienating to global viewers. However, Im translates these rigid feudal ethics into universal humanistic themes of romantic devotion and anti-tyrannical resistance. During the harrowing sequence where Chunhyang is flogged by the tyrannical Magistrate Byeon, the editing rate is dictated strictly by the rhythm of the gosu's drum (*buk*) and the rasping vocal strain of Cho Sang-hyun. The visceral acoustic intensity elevates Chunhyang's suffering from a specific Confucian duty into an empowering spectacle of bodily endurance and female agency.
+
+Thus, Chunhyang proves that national tradition can travel across cultural borders. By acknowledging its own performative nature through modern framing, the film preserves the cultural specificity of pansori while marketing its ethical drama as a globally resonant cinematic masterpiece.`
+          },
+          {
+            id: "B2",
+            q: "Why tell the Korean War through two brothers (in Taegukgi)? What do the present-day frame and the time change?",
+            koSummary: "태극기 휘날리며가 한국전쟁을 두 형제(진태와 진석)로 그린 이유는, 이데올로기적 전쟁을 '한 피를 나눈 형제 간의 골육상쟁'이라는 민족적 알레고리로 치환하기 위함입니다. 현대 DMZ 유해 발굴 오프닝/엔딩 프레임은 50년 전의 역사적 전쟁을 미완의 개인적 애도이자 현재 진행형인 분단의 비극으로 연결합니다.",
+            keywords: "Fraternal allegory, National division, Transient monument (Youngmin Choe), Excavation frame, Fountain pen prop, Melodrama.",
+            thesis: "Kang Je-gyu allegorizes the Korean War through two brothers to recast ideological conflict as a tragic fratricidal trauma of shared blood; the contemporary DMZ excavation frame collapses historical distance, transforming abstract national history into an unresolved, living site of personal mourning.",
+            scenes: [
+              "Scene 1: The Battlefield Confrontation. Jin-tae, driven mad by military brainwashing, attacks his brother Jin-seok in the trenches. Close-up framing and handheld camerawork capture their tears and blood, visualizing fratricide as national tragedy.",
+              "Scene 2: The DMZ Excavation Frame. Elderly Jin-seok weeps over Jin-tae's skeletal remains and the rusted fountain pen in the archaeological trench, grounding the film's kinetic carnage in unfinished historical grief."
+            ],
+            essay: `In Taegukgi: The Brotherhood of War (2004), director Kang Je-gyu deliberately avoids framing the Korean War through grand geopolitical treaties or political leaders, choosing instead to tell the conflict through the intimate relationship of two brothers, Jin-tae and Jin-seok. By centering the war on fraternal devotion and tragic alienation, the film constructs a powerful national allegory: the Korean War was not a glorious ideological crusade, but a fratricidal catastrophe where brothers of the same blood were forced to slaughter one another by forces beyond their comprehension. 
+
+The fraternal melodrama provides a visceral emotional anchor for the film’s critique of war. Initially, Jin-tae’s sole motivation for charging into battle is filial love—to earn the Medal of Honor so that the military will discharge his sickly younger brother Jin-seok. However, as the war drags on, Jin-tae’s obsession with heroism descends into bloodlust and madness. In the climactic battle, Kang Je-gyu utilizes disorienting handheld camerawork, extreme close-ups, and rapid cutting to depict Jin-tae attacking Jin-seok without recognizing him. Their physical brawl in the mud-soaked trench externalizes the horror of the Korean partition: two halves of the same family, blinded by war’s madness, tearing each other apart.
+
+Crucially, the present-day archaeological excavation frame in the DMZ elevates this personal melodrama into a national monument. As Youngmin Choe argues in "Transient Monuments," cinema functions as a dynamic, sensory memorial that re-activates traumatic memory. The film opens and closes in the contemporary DMZ, where elderly Jin-seok is notified that forensic teams have unearthed war remains. When Jin-seok touches Jin-tae’s skull and discovers the hand-carved fountain pen he gave him fifty years earlier, the film executes a profound collapse of temporal distance. 
+
+The contemporary frame ensures that the spectator cannot consume the two hours of battlefield pyrotechnics as mere Hollywood-style entertainment. By returning to the wrinkled, weeping face of an elderly survivor in the 21st century, the excavation frame reminds the audience that the Korean War is not a closed chapter in a history book, but an unresolved, bleeding trauma that continues to define the partitioned Korean Peninsula.`
+          },
+          {
+            id: "B3",
+            q: "Does Taegukgi revise the anticommunist war film, or reproduce it at a higher price?",
+            koSummary: "태극기 휘날리며는 과거 권위주의 정권의 '반공영화(Anticommunist film)'의 선악 이분법을 전복하여 남북한 군대 모두의 민간인 학살과 광기를 고발한다는 점에서 급진적 개정을 이룹니다. 그러나 이데올로기적 비판을 압도적인 특수효과와 형제애 멜로드라마로 봉합하여 상업적 스펙터클로 상품화했다는 점에서 더 비싼 가격으로 재생산했다는 비판도 유효합니다.",
+            keywords: "Anticommunist film (반공영화), Ideological revision, Young-shin execution, Fratricidal trauma, Commercial blockbuster, Melodramatic displacement.",
+            thesis: "Taegukgi fundamentally revises the traditional anticommunist film by exposing the atrocities of both South and North Korean militaries; however, by ultimately subordinating structural ideological critique to visceral Hollywood-style pyrotechnics and tearful fraternal melodrama, it partially reproduces war as a lucrative commercial commodity.",
+            scenes: [
+              "Scene 1: Young-shin's Execution. South Korean anti-communist youth militia execute Jin-seok's fiancée Young-shin for simply signing a communist food ration roster, completely shattering the myth of South Korean moral purity.",
+              "Scene 2: Jin-tae's Communist Transformation. Jin-tae joins the North Korean flag unit out of sheer betrayal and vengeance, demonstrating that soldiers' allegiances are shaped by personal trauma rather than political loyalty."
+            ],
+            essay: `For decades under South Korea’s military dictatorships (1960s–1980s), the state-mandated "anticommunist film" (*ban'gong yeonghwa*) enforced a rigid, Manichean ideology: South Korean soldiers were portrayed as virtuous, selfless patriots, while North Korean communists were demonized as subhuman monsters. Kang Je-gyu’s Taegukgi (2004) fundamentally shatters this official state propaganda, mounting a radical historical revision. Yet, by packaging this revision inside high-concept Hollywood pyrotechnics and fraternal melodrama, the film ambivalently reproduces war trauma as an expensive, consumable blockbuster spectacle.
+
+Taegukgi’s revision of the anticommunist genre is evident in its unflinching depiction of atrocities committed by both sides. The film refuses to grant moral superiority to the South Korean state. In one of the film’s most shocking sequences, South Korean right-wing anti-communist youth militias round up innocent civilians, including Jin-seok’s fiancée Young-shin, and execute them in a mass ditch simply because they accepted food rations from the communist occupiers during the famine. Kang Je-gyu shoots this sequence with jarring handheld cameras, desaturated colors, and agonizing diegetic screams, visually indicting South Korean state terror. Furthermore, when Jin-tae believes his brother was killed by South Korean officers, he defects to the North Korean army and becomes a ruthless commander, exposing that wartime allegiance was driven by personal survival and grief rather than ideological devotion.
+
+Nevertheless, there is a compelling argument that Taegukgi reproduces the war film "at a higher price." While the film critiques the senseless violence of war, it simultaneously glorifies that violence through multi-million dollar special effects, visceral gore, and kinetic action choreography borrowed from Saving Private Ryan. The structural historical causes of the war—geopolitical imperialism between the US and the USSR, class tensions, and state authoritarianism—are eclipsed by sensory sensory overload and melodramatic tears. The tragedy of national division is neatly reduced to the personal tragedy of two handsome movie stars (Jang Dong-gun and Won Bin).
+
+In conclusion, Taegukgi succeeds in revising the ideological lies of the Cold War anticommunist film, revealing war as a machine of mutual dehumanization. Yet, by relying on sentimental melodrama to resolve political trauma, it packages historical suffering into South Korea’s most expensive and profitable cinematic commodity.`
+          }
+        ]
+      },
+      themeC: {
+        title: "Theme C. Violence, Responsibility, and Class",
+        films: "Oldboy (Park Chan-wook, 2003), Burning (Lee Chang-dong, 2018)",
+        readings: "Chungmoo Choi, Slavoj Žižek, Bjorn Boman, Haruki Murakami",
+        prompts: [
+          {
+            id: "C1",
+            q: "Is 'Korean violence' a cultural trait, or a category made by Western distribution? Is it possible to film 'violence' beautifully or ethically (in The Host, Oldboy, or Burning)?",
+            koSummary: "'한국적 폭력'은 한국인의 타고난 문화적 특성이 아니라, 서구 배급사(타르타르 아시아 익스트림 등)가 이국화하여 소비한 오리엔탈리즘적 범주입니다. 박찬욱의 올드보이에서 폭력의 바로크적 미학화는 단순한 잔혹극이 아니라, 슬라보예 지젝의 '주관적 폭력 vs 체제적 폭력'과 최정무의 '무관심의 악(Evil of apathy)'을 폭로하며 관객에게 윤리적 책임을 묻는 장치로 기능합니다.",
+            keywords: "Korean violence, Tartan Asia Extreme, Western distribution, Subjective vs systemic violence (Žižek), Evil of apathy (Chungmoo Choi), Ethical aestheticization.",
+            thesis: "'Korean violence' is not an essential cultural trait, but a marketing category constructed by Western distributors like Tartan Asia Extreme; however, Park Chan-wook ethically aestheticizes violence in Oldboy by forcing spectators to recognize that graphic 'subjective violence' is merely a symptomatic eruption of the invisible 'systemic violence' born of social apathy.",
+            scenes: [
+              "Scene 1: The Hallway Hammer Brawl. Shot in a single unbroken horizontal tracking shot to Vivaldi's Winter, physical combat is stripped of heroic glamor and transformed into an agonizing, exhausted endurance test.",
+              "Scene 2: The Tongue Cutting in Woo-jin's Penthouse. Extreme close-ups of Dae-su severing his own tongue to beg for silence, aestheticizing bodily sacrifice to force the viewer to confront the catastrophic cost of careless speech."
+            ],
+            essay: `The global reception of New Korean Cinema in the early 2000s was heavily defined by the label of "Korean violence"—a label popularized by Western distribution labels like Tartan Video's "Asia Extreme." However, this notion of violence as an innate, hyper-violent Korean cultural trait is an orientalist fiction constructed by Western marketing to exoticize Asian cinema for foreign consumption. In masterpieces like Park Chan-wook’s Oldboy (2003) and Lee Chang-dong's Burning (2018), violence is neither a sensational cultural trait nor mere exploitation; rather, these directors demonstrate that it is possible to film violence ethically and beautifully by using formal aestheticization to interrogate spectator complicity and structural oppression.
+
+To understand the ethics of violence in Oldboy, one must apply Slavoj Žižek’s theoretical distinction between "subjective violence" and "systemic violence." Subjective violence refers to visible, sensational acts of physical brutality—the teeth extraction, the hammer fight, the severing of Dae-su’s tongue. Western critics often fixated on these moments as gratuitous gore. Yet, Park Chan-wook’s formal staging deconstructs this very spectacle. In the legendary hallway battle, Park films the fight not through rapid, adrenaline-pumping Hollywood action cuts, but in a single, continuous horizontal tracking shot accompanied by the melancholy, non-diegetic strings of Vivaldi. The camera remains objective and detached, showing Dae-su panting, bleeding, and collapsing from exhaustion. By aestheticizing the fight as an operatic tableau of human endurance, the film strips violence of heroic triumphalism, transforming it into an agonizing physical burden.
+
+More crucially, the film forces the audience to confront what Chungmoo Choi identifies as the "evil of apathy." The ultimate horror of Oldboy is not the physical torture Dae-su endures in the private prison, but the realization that this entire 15-year nightmare was triggered by casual, forgotten gossip. In high school, Dae-su casually gossiped about Woo-jin’s incestuous relationship with his sister Soo-ah, forgetting his words immediately. For Woo-jin and Soo-ah, that thoughtless rumor led to suicide and lifelong agony. The graphic subjective violence Dae-su inflicts on himself—cutting out his own tongue with scissors—is the ethical culmination of the narrative: an agonizing bodily sacrifice to atone for the invisible, systemic violence of his everyday indifference.
+
+In conclusion, Park Chan-wook films violence beautifully not to sanitize or celebrate cruelty, but to elevate it to the level of Greek tragedy. By exposing how sensational physical gore stems directly from invisible social apathy, Oldboy turns cinematic violence into an ethical mirror, demanding that spectators confront the devastating power of their own thoughtless words.`
+          },
+          {
+            id: "C2",
+            q: "Is the final scene of Burning real, or the novel Jong-su begins to write? How does your answer change the film's critique regarding the themes of ambiguity, gender dynamic, and class issue?",
+            koSummary: "버닝(Burning)의 마지막 눈밭 살인 장면이 실제 살인인지 종수가 혜미의 방에서 쓰기 시작한 소설인지 영화는 의도적으로 확답을 주지 않습니다. 이 '인식론적 모호성(Ambiguity)' 자체가 영화의 핵심 비판 장치이며, 어느 쪽으로 해석하든 영화는 신자유주의 헬조선의 청년 무력감과, 상류층 남성(벤)과 빈곤층 남성(종수) 모두에게 도구화되고 배제당하는 취약한 여성(혜미)의 비극을 폭로합니다.",
+            keywords: "Epistemological ambiguity, Pantomime of the tangerine, Little Hunger vs Great Hunger, Youth precariat (Hell Joseon), Gendered violence, Intertextuality (Boman).",
+            thesis: "Whether the bloody climax of Burning is an objective murder or the fictional manuscript Jong-su writes in Hae-mi's empty room, the film's radical epistemological ambiguity functions as a devastating diagnostic of South Korea's youth precariat—exposing how working-class masculine impotence transforms existential despair into violent, patriarchal scapegoating.",
+            scenes: [
+              "Scene 1: Jong-su Writing in Hae-mi's Room. The camera tracks behind Jong-su as he strips naked and begins typing on his laptop while looking out at the Seoul N-Tower, seamlessly bridging objective reality with subjective literary creation.",
+              "Scene 2: The Snow Climax. In an isolated, snow-covered barren field, Jong-su stabs Ben, strips naked, burns his bloody clothes along with Ben's Porsche, and shivers uncontrollably as he drives away into the freezing gray mist."
+            ],
+            essay: `Lee Chang-dong’s Burning (2018) is a masterwork of narrative withholding. The film culminates in a shocking act of violence: in a desolate, snow-covered rural field, working-class protagonist Jong-su brutally stabs the wealthy, cosmopolitan Ben, stuffs his body into his luxury Porsche, strips naked, and sets the car ablaze before fleeing into the freezing twilight. The film deliberately refuses to answer whether this violent climax represents an objective physical murder or the fictional manuscript that Jong-su began typing in Hae-mi’s vacant room. Crucially, this unresolved ambiguity is not a narrative flaw, but the film's core critical apparatus, diagnosing the deep intersections of class resentment, masculine fragility, and gendered violence in contemporary South Korea.
+
+If the final sequence is interpreted as an objective reality, the murder functions as a visceral, explosive eruption of class warfare. Throughout the film, Lee contrasts Jong-su’s impoverished existence in rural Paju—surrounded by unpaid debts, manure, and border propaganda broadcasts—with Ben’s pristine, effortless wealth in Gangnam. Ben is the modern Korean incarnation of Jay Gatsby: a wealthy predator who confesses to "burning greenhouses" (a blatant metaphor for murdering disposable, working-class women like Hae-mi). In this reading, Jong-su’s murder of Ben is a desperate, retaliatory strike by the precariat against a predatory bourgeois elite that treats human beings as disposable aesthetic play.
+
+Conversely, if the final scene is the fictional novel Jong-su is writing, the film mounts an even more devastating critique of patriarchal masculine impotence. Earlier in the film, Hae-mi teaches Jong-su the philosophy of the tangerine pantomime: "Don't think there is a tangerine here; just forget that there isn't one." Writing a novel where Ben is a psychopathic killer and Jong-su is Hae-mi’s avenger allows Jong-su to escape his own guilt. In reality, Hae-mi may have simply fled her debts, committed suicide, or disappeared to escape a patriarchal society that commodified her body. By writing a narrative where Ben killed her, Jong-su absolves himself of his own complicity—most notably his cruel slur calling Hae-mi a "whore" (*changnyeo*) after she danced topless at twilight. 
+
+Ultimately, both interpretations arrive at the same indictment of Korean gender dynamics. Whether Ben incinerated Hae-mi physically or Jong-su erased her existentially by turning her into a fictional plot device, Hae-mi is completely consumed by male projection. While Hae-mi longed for the "Great Hunger"—an existential search for meaning and transcendence—she is trapped between Ben’s cynical consumerism and Jong-su’s bitter, patriarchal resentment. Burning's ambiguity forces the spectator to realize that in the neoliberal landscape of Hell Joseon, vulnerable working-class women are rendered invisible and disposable by both classes of men.`
+          }
+        ]
+      }
+    };
+
+    function showEssayTheme(themeKey) {
+      ['themeA', 'themeB', 'themeC'].forEach(t => {
+        const btn = document.getElementById(`btn-${t}`);
+        if (t === themeKey) {
+          btn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 text-white shadow-sm transition";
+        } else {
+          btn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
+        }
+      });
+
+      const theme = essayThemesData[themeKey];
+      const container = document.getElementById('essay-theme-container');
+      container.innerHTML = `
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-6 animate-fadeIn">
+          <div class="border-b border-slate-200 pb-4">
+            <span class="text-xs font-black uppercase tracking-wider text-blue-600">${themeKey.toUpperCase()}</span>
+            <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">${theme.title}</h3>
+            <div class="flex flex-wrap gap-2 text-xs text-slate-500 mt-2">
+              <span><strong>Films:</strong> ${theme.films}</span> • 
+              <span><strong>Scholars:</strong> ${theme.readings}</span>
+            </div>
+          </div>
+
+          <!-- Prompts Loop -->
+          <div class="space-y-6">
+            ${theme.prompts.map((p, idx) => `
+              <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50/50 space-y-4">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 text-xs font-black">Prompt ${p.id}</span>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 mt-1.5">${p.q}</h4>
+                  </div>
+                  <span class="text-xs bg-slate-200 text-slate-700 px-2.5 py-1 rounded-full font-bold whitespace-nowrap">20 Pts</span>
+                </div>
+
+                <!-- Korean Summary & Keywords -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                  <div class="bg-blue-50/70 p-3.5 rounded-xl border border-blue-200">
+                    <strong class="text-blue-900 block mb-1">🇰🇷 한국어 핵심 요약 & 논리 흐름:</strong>
+                    <p class="text-slate-700 leading-relaxed">${p.koSummary}</p>
+                  </div>
+                  <div class="bg-purple-50/70 p-3.5 rounded-xl border border-purple-200">
+                    <strong class="text-purple-900 block mb-1">🔤 영어 필수 키워드 & 학자 이론:</strong>
+                    <p class="text-purple-950 font-medium leading-relaxed">${p.keywords}</p>
+                  </div>
+                </div>
+
+                <!-- Thesis & Scenes -->
+                <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2.5 text-xs sm:text-sm">
+                  <div>
+                    <strong class="text-blue-700 block mb-0.5">📌 Arguable Thesis Statement:</strong>
+                    <p class="font-medium text-slate-900 italic bg-slate-50 p-2.5 rounded border border-slate-200">"${p.thesis}"</p>
+                  </div>
+                  <div>
+                    <strong class="text-purple-700 block mb-1">🎬 Formal Scene Evidence (형식어 묘사 2개 장면):</strong>
+                    <ul class="space-y-1.5 text-slate-700 text-xs">
+                      ${p.scenes.map(s => `<li>• ${s}</li>`).join('')}
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Full Model Essay Accordion -->
+                <div class="pt-2">
+                  <details class="group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <summary class="p-3.5 text-xs sm:text-sm font-bold text-slate-800 cursor-pointer flex items-center justify-between hover:bg-slate-50 transition">
+                      <span class="flex items-center gap-2">
+                        <span>📝</span> 시험장에 그대로 쓸 2~3페이지 영문 에세이 모범 답안 (Full Model English Essay)
+                      </span>
+                      <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="p-5 border-t border-slate-200 text-xs sm:text-sm text-slate-800 leading-relaxed space-y-4 font-serif bg-slate-50/30 whitespace-pre-line">
+${p.essay}
+                    </div>
+                  </details>
+                </div>
+
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // ================= DATA 4: VISUAL GRAMMAR GUIDE PANELS =================
+    const visualGrammarData = {
+      'v-angles': `
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 animate-fadeIn">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-blue-600">Eye-Level (눈높이)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">Neutral / Democratic</h4>
+            <p class="text-xs text-slate-600 mt-1">카메라가 인물의 시선 높이에 위치하여 관객과 인물 간의 평등하고 자연스러운 감정적 유대감 형성.</p>
+            <div class="mt-2 text-xs bg-white p-2 rounded border border-slate-200 font-mono text-blue-800">
+              "An eye-level angle establishes a neutral, democratic relationship, cultivating intimate empathy."
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-blue-600">Low Angle (로우 앵글 / 앙각)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">Power / Dominance / Threat</h4>
+            <p class="text-xs text-slate-600 mt-1">카메라가 인물 아래에서 위로 올려다보아 권력, 위압감, 영웅주의 또는 거대한 위협을 시각화.</p>
+            <div class="mt-2 text-xs bg-white p-2 rounded border border-slate-200 font-mono text-blue-800">
+              "Kang Je-gyu shoots Jin-tae from a low angle as he charges forward, magnifying his ruthless military dominance."
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-blue-600">High Angle (하이 앵글 / 부각)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">Vulnerability / Weakness</h4>
+            <p class="text-xs text-slate-600 mt-1">카메라가 인물 위에서 내려다보아 피사체의 무력함, 취약성, 왜소함을 강조.</p>
+            <div class="mt-2 text-xs bg-white p-2 rounded border border-slate-200 font-mono text-blue-800">
+              "The high-angle shot looking down at terrified soldiers traps them in their utter vulnerability against artillery."
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-blue-600">Worm's Eye View (극단적 로우)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">Towering Scale / Awe</h4>
+            <p class="text-xs text-slate-600 mt-1">땅바닥에서 수직으로 올려다보아 초현실적 거대함이나 압도적 공포를 표현.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-blue-600">Bird's Eye / Aerial (부감 / 항공샷)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">Omniscient / Detachment</h4>
+            <p class="text-xs text-slate-600 mt-1">하늘에서 수직으로 내려다보아 개별 인간을 점으로 만들고 운명적 고립과 체제적 붕괴를 조망.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-blue-600">Dutch Tilt / Canted (더치 틸트 / 경사각)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">Disorientation / Moral Rot</h4>
+            <p class="text-xs text-slate-600 mt-1">수평선을 의도적으로 기울여 인물의 심리적 광기, 불안정, 도덕적 타락을 시각화.</p>
+          </div>
+        </div>
+      `,
+      'v-framing': `
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 animate-fadeIn">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-purple-600">Extreme Wide Shot (EWS)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">설정샷 / 광활한 환경</h4>
+            <p class="text-xs text-slate-600 mt-1">인물보다 도시 스카이라인, 한강 다리, 전장의 거대한 지리적 환경을 보여주어 공간적 규모 확립.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-purple-600">Long Shot (Full Shot)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">전신샷 / 신체적 행동</h4>
+            <p class="text-xs text-slate-600 mt-1">머리부터 발끝까지 인물의 신체 전체를 보여주어 달리기, 전투, 안무 등의 신체적 행동을 추적.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-purple-600">Medium Shot (MS)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">허리 위 / 대사와 제스처</h4>
+            <p class="text-xs text-slate-600 mt-1">1~3명의 인물을 허리 위에서 포착하여 대화(Dialogue)와 상체 제스처, 감정적 상호작용을 포착.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-purple-600">Close-Up (CU)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">얼굴과 어깨 / 극단적 몰입</h4>
+            <p class="text-xs text-slate-600 mt-1">배경을 지우고 얼굴 표정에 집중시켜 슬픔, 공포, 죄책감 등의 미세 감정(Micro-expressions)에 몰입.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-purple-600">Extreme Close-Up (ECU)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">눈동자 / 미세 디테일</h4>
+            <p class="text-xs text-slate-600 mt-1">눈동자, 잘려나가는 혀, 만년필 촉 등 미세 디테일을 확대하여 비일상적 긴장감과 집착을 강조.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-purple-600">Plan Américain (MLS)</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">무릎 위 샷</h4>
+            <p class="text-xs text-slate-600 mt-1">무릎 위부터 포착하여 권총 홀스터나 무기 사용 직전의 신체적 긴장감을 표현.</p>
+          </div>
+        </div>
+      `,
+      'v-movement': `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fadeIn">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm">Pan vs Tilt (고정축 회전)</h4>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+              <li>• <strong>Pan (팬):</strong> 삼각대 축 고정 상태에서 좌우 수평 회전 (고개 돌리기). 풍경을 훑거나 프레임 밖 인물 공개.</li>
+              <li>• <strong>Tilt (틸트):</strong> 삼각대 축 고정 상태에서 상하 수직 회전 (고개 끄덕이기). 거대한 건축물이나 위에서 덮쳐오는 위협 공개.</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm">Tracking / Dolly vs Zoom</h4>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+              <li>• <strong>Tracking / Dolly:</strong> 카메라가 레일이나 카트에 실려 물리적으로 이동. 3차원 공간감과 원근감 유지.</li>
+              <li>• <strong>Zoom:</strong> 렌즈 초점거리만 광학적으로 조절하여 피사체를 확대. 배경과 인물의 깊이감이 평면화(Flattening)됨.</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm">Handheld (핸드헬드)</h4>
+            <p class="text-xs text-slate-600 mt-1">카메라맨이 손으로 들고 촬영하여 거칠고 흔들리는 화면. 다큐멘터리적 현장감, 전쟁터의 혼란, 긴박한 패닉 표현 (태극기 휘날리며, 부산행).</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-900 text-sm">Crane / Boom & Pedestal</h4>
+            <p class="text-xs text-slate-600 mt-1">크레인 팔로 카메라를 공중 높이 띄워 지면에서 공중 부감으로 드라마틱하게 이동하며 공간의 전체 양상을 공개.</p>
+          </div>
+        </div>
+      `,
+      'v-mise': `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 animate-fadeIn">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-amber-600">Lighting Taxonomy</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">조명 체계 (Lighting)</h4>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+              <li>• <strong>Three-Point:</strong> Key Light(주광) + Fill Light(보조광) + Backlight(역광). 고전 할리우드의 표준 입체 조명.</li>
+              <li>• <strong>High-Key:</strong> 균일하고 밝으며 그림자가 없음. 코미디, 평화로운 전쟁 전 일상.</li>
+              <li>• <strong>Low-Key (Chiaroscuro):</strong> 명암의 극단적 대비와 깊은 그림자. 느와르, 심리적 트라우마, 도덕적 부패 (올드보이).</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-amber-600">Setting & Props</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">세트 및 소품 (Mise-en-scène)</h4>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+              <li>• <strong>On Location vs On Set:</strong> 실제 로케이션의 현장성 vs 통제된 스튜디오의 인공미.</li>
+              <li>• <strong>Props (소품):</strong> 태극기 휘날리며의 각인된 만년필, 올드보이의 보라색 상자와 카세트, 버닝의 분홍색 시계 등 핵심 서사 상징물.</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-amber-600">Color Palette</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">색채 팔레트 (Palette)</h4>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+              <li>• <strong>Desaturated:</strong> 채도를 뺀 흙갈색/회색 톤은 전쟁의 파괴와 역사적 트라우마 상징 (태극기 휘날리며).</li>
+              <li>• <strong>Baroque Purple & Green:</strong> 썩은 녹색과 바로크 보라색은 도덕적 타락과 근친상간의 억압적 죄의식 표현 (올드보이).</li>
+            </ul>
+          </div>
+        </div>
+      `,
+      'v-editing': `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fadeIn">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-teal-600">Yale Film Guide: Editing</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">편집의 핵심 원리</h4>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+              <li>• <strong>Long Take:</strong> 무편집 장시간 샷. 시간의 실제 지속성을 보존하며 실존적 응시 유도 (버닝 노을 댄스).</li>
+              <li>• <strong>ASL / Cutting Rate:</strong> 샷 길이의 평균치. 빠른 커팅은 아드레날린과 패닉을, 느린 커팅은 엄숙한 슬픔과 숙고를 유도.</li>
+              <li>• <strong>Rhythmic Editing:</strong> 음악 박자나 신체 비트에 맞춘 커팅 (춘향뎐 판소리 북장단).</li>
+              <li>• <strong>Continuity Editing:</strong> 180도 법칙, 아이라인 매치, 샷-리버스-샷을 통한 보이지 않는 시공간적 연속성 확립.</li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-teal-600">Yale Film Guide: Sound</span>
+            <h4 class="font-bold text-slate-900 text-sm mt-1">사운드의 핵심 원리</h4>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5">
+              <li>• <strong>Diegetic:</strong> 이야기 세계 내부 소리 (등장인물이 들을 수 있는 대사, 발소리, 총성).</li>
+              <li>• <strong>Non-Diegetic:</strong> 이야기 세계 외부 소리 (인물이 들을 수 없는 오케스트라 배경음악, 해설 내레이션).</li>
+              <li>• <strong>Sound Bridge:</strong> 장면 전환 시 소리가 화면을 가로질러 이어지는 연결 (괴물 영안실 독극물 소리 -> 한강).</li>
+              <li>• <strong>Contrapuntal Sound:</strong> 화면의 끔찍한 폭력과 반대되는 우아한 클래식 음악의 아이러니한 충돌 (올드보이 비발디 사계).</li>
+            </ul>
+          </div>
+        </div>
+      `
+    };
+
+    function switchVisualTab(tabKey) {
+      ['v-angles', 'v-framing', 'v-movement', 'v-mise', 'v-editing'].forEach(k => {
+        const btn = document.getElementById(`vnav-${k.split('-')[1]}`);
+        if (k === tabKey) {
+          btn.className = "pb-2 text-blue-600 border-b-2 border-blue-600 whitespace-nowrap font-bold";
+        } else {
+          btn.className = "pb-2 text-slate-400 hover:text-slate-700 whitespace-nowrap font-bold";
+        }
+      });
+      document.getElementById('v-panels-container').innerHTML = visualGrammarData[tabKey];
+    }
+
+    // ================= INITIALIZATION =================
+    document.addEventListener('DOMContentLoaded', () => {
+      renderFlashcards(flashcardsData);
+      renderClipButtons();
+      displayClip(1);
+      showEssayTheme('themeA');
+      switchVisualTab('v-angles');
+    });
+  </script>
+</body>
+</html>
